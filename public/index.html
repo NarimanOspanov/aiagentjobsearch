@@ -818,6 +818,315 @@ h2 em { font-style: italic; color: var(--accent); }
   40% { opacity: 1; }
 }
 
+/* INTEGRATIONS */
+.integrations { background: var(--cream); padding: 120px 24px; }
+.integrations-inner { max-width: 860px; margin: 0 auto; }
+.integrations-header { text-align: center; margin-bottom: 72px; }
+.integrations-header .section-lead { margin: 0 auto; }
+
+.intg-diagram-wrap {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 56px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.intg-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.intg-chip-icon {
+  width: 64px; height: 64px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.intg-chip-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text3);
+  letter-spacing: 0.2px;
+}
+
+.intg-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border2);
+  position: relative;
+  min-width: 80px;
+  max-width: 160px;
+  overflow: visible;
+}
+
+.intg-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 6px rgba(201,100,66,0.6);
+  animation: flow-right 2s ease-in-out infinite;
+}
+
+.intg-connector-rev::after {
+  animation: flow-right 2s ease-in-out infinite 1s;
+}
+
+@keyframes flow-right {
+  0%   { left: 0; opacity: 0; }
+  15%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { left: calc(100% - 8px); opacity: 0; }
+}
+
+.intg-hub {
+  width: 88px; height: 88px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 0 10px rgba(201,100,66,0.1), 0 0 0 20px rgba(201,100,66,0.05), 0 8px 32px rgba(201,100,66,0.3);
+}
+
+.intg-hub-label {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.intg-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.intg-card {
+  background: var(--warm-white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 28px 28px 28px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.intg-card-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.intg-card-body h3 {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text1);
+}
+
+.intg-card-body p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+.intg-security {
+  margin-top: 14px;
+  background: #f0f9f4;
+  border: 1px solid #c3e6d0;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.intg-security-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2d7a4f;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+
+.intg-security-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.intg-security-list li {
+  font-size: 12.5px;
+  color: #2d5a3d;
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.intg-security-list li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: #3a9e5f;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .intg-diagram-wrap { padding: 40px 20px; gap: 0; }
+  .intg-connector { min-width: 40px; }
+  .intg-hub { width: 70px; height: 70px; }
+  .intg-cards { grid-template-columns: 1fr; }
+  .intg-card { flex-direction: column; gap: 12px; }
+}
+
+/* MATCH CARD */
+.match-card {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+}
+
+.match-card-top { padding: 24px 24px 20px; }
+
+.match-company-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.match-company-logo {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: #635bff;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.match-company-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text1);
+}
+
+.match-company-meta {
+  font-size: 12px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.match-badge {
+  margin-left: auto;
+  background: #e8f5ee;
+  color: #2d7a4f;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.match-role {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text1);
+  margin-bottom: 6px;
+}
+
+.match-salary {
+  font-size: 14px;
+  color: var(--text2);
+  font-weight: 500;
+}
+
+.match-divider {
+  height: 1px;
+  background: var(--border2);
+  margin: 0 24px;
+}
+
+.match-tags-label {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text3);
+  padding: 16px 24px 10px;
+}
+
+.match-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 24px 16px;
+}
+
+.match-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.match-tag-yes { background: #e8f5ee; color: #2d7a4f; }
+.match-tag-no  { background: #fff4e6; color: #b35c00; }
+
+.match-timeline {
+  padding: 16px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.match-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.match-step-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.match-step-done .match-step-dot   { background: #3a9e5f; }
+.match-step-active .match-step-dot { background: var(--accent); box-shadow: 0 0 0 3px rgba(201,100,66,0.2); }
+.match-step-pending .match-step-dot { background: var(--border); }
+
+.match-step-done .match-step-text   { color: var(--text2); }
+.match-step-active .match-step-text { color: var(--text1); font-weight: 500; }
+.match-step-pending .match-step-text { color: var(--text3); }
+
 /* BENEFITS */
 .benefits { background: var(--warm-white); }
 
@@ -1086,8 +1395,7 @@ footer {
     <h1>Только полная удалёнка.<br>Только <em>мировые<br>компании.</em></h1>
     <p class="hero-sub">ИИ-агент находит только 100% удалённые вакансии в мировых компаниях, адаптирует резюме, подаёт заявки и готовит вас к интервью — пока вы занимаетесь жизнью.</p>
     <div class="hero-actions">
-      <a href="#cta" class="btn-primary">Запустить агента</a>
-      <a href="#how" class="btn-ghost">Посмотреть демо</a>
+      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer">Запустить агента</a>
     </div>
   </div>
 
@@ -1110,13 +1418,13 @@ footer {
     { icon: '🧠', label: 'Анализирую совпадение профиля', detail: 'Senior PM в Stripe — совпадение 87%', type: 'processing' },
     { icon: '✍️', label: 'Адаптирую резюме', detail: 'Переписываю под ATS Stripe · добавляю remote-сигналы', type: 'processing' },
     { icon: '✅', label: 'Резюме готово', detail: 'Senior PM · Stripe · 100% remote · $140–180k', type: 'done' },
+    { icon: '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="animation:spin 3s linear infinite;transform-origin:center;display:block"><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(30 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(60 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(90 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(120 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(150 8 8)"/></svg>', label: 'Готовлю сопроводительное письмо', detail: 'Персонализирую под Senior PM · Stripe · remote-first культура', type: 'processing' },
     { icon: '📨', label: 'Отправляю заявку', detail: 'Remote-first Product Lead · Loom Inc.', type: 'processing' },
     { icon: '✅', label: 'Заявка отправлена', detail: 'Loom · подтверждение получено · жду ответа', type: 'done' },
     { icon: '🌍', label: 'Ищу новые позиции', detail: 'Обновляю фильтры · только fully remote · worldwide', type: 'processing' },
     { icon: '🔍', label: 'Найдено 2 позиции', detail: 'Figma (США) · Doist (Испания/удалённо)', type: 'done' },
     { icon: '✍️', label: 'Адаптирую резюме под Figma', detail: 'Фокус на дизайн-системах и продуктовых метриках', type: 'processing' },
-    { icon: '🎤', label: 'Готовлю мок-интервью', detail: 'Вопросы по стандартам FAANG · поведенческие + кейсы', type: 'processing' },
-    { icon: '✅', label: 'Мок-интервью запланировано', detail: 'Завтра 10:00 · 45 минут · с детальной обратной связью', type: 'done' },
+    { icon: '📬', label: 'Читаю входящие письма', detail: 'Gmail · 3 новых ответа от рекрутеров · анализирую содержание', type: 'processing' },
     { icon: '📨', label: 'Отправляю заявку в Figma', detail: 'Письмо персонализировано под Head of PM Figma', type: 'processing' },
     { icon: '🔍', label: 'Мониторю статусы', detail: 'Stripe · Loom · Figma · Linear — все активны', type: 'processing' },
     { icon: '🌍', label: 'Новый цикл поиска', detail: 'Shopify · Automattic · Zapier · Buffer проверены', type: 'processing' },
@@ -1156,6 +1464,9 @@ footer {
     counter.textContent = count + ' действи' + (count === 1 ? 'е' : count < 5 ? 'я' : 'й') + ' сегодня';
   }
 
+  const ICON_DONE = '<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="#3a9e5f"/><polyline points="3.5,7 6,9.5 10.5,4.5" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  const ICON_THINKING = '<svg width="15" height="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="animation:spin 3s linear infinite;transform-origin:center;display:block"><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(30 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(60 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(90 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(120 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(150 8 8)"/></svg>';
+
   function render() {
     list.innerHTML = '';
     items.forEach((item, i) => {
@@ -1163,12 +1474,9 @@ footer {
       const secsAgo = Math.round((Date.now() - item.ts) / 1000);
       const div = document.createElement('div');
       div.className = 'feed-item' + (isActive ? ' feed-active feed-new' : '');
+      const iconHtml = isActive ? ICON_THINKING : ICON_DONE;
       div.innerHTML =
-        '<div class="feed-icon">' +
-          (isActive && item.type === 'processing'
-            ? '<span class="feed-icon-inner">' + item.icon + '</span>'
-            : item.icon) +
-        '</div>' +
+        '<div class="feed-icon">' + iconHtml + '</div>' +
         '<div class="feed-text">' +
           '<div><strong>' + item.label + '</strong></div>' +
           '<div style="font-size:12px;color:var(--text3);margin-top:2px">' + item.detail + '</div>' +
@@ -1339,49 +1647,53 @@ footer {
       </div>
 
       <div class="how-right">
-        <div class="agent-card">
-          <div class="agent-card-header">
-            <div class="agent-avatar">J</div>
-            <div class="agent-info">
-              <h4>Screenly Agent</h4>
-              <span>Алина Смирнова · PM / 5 лет опыта</span>
+        <div class="match-card">
+          <div class="match-card-top">
+            <div class="match-company-row">
+              <div class="match-company-logo">S</div>
+              <div>
+                <div class="match-company-name">Stripe</div>
+                <div class="match-company-meta">США · 100% remote · worldwide</div>
+              </div>
+              <div class="match-badge">87% совпадение</div>
             </div>
-            <div class="agent-status">
-              <div class="status-dot"></div>
-              активен
-            </div>
+            <div class="match-role">Senior Product Manager</div>
+            <div class="match-salary">$140 000 – $180 000 / год</div>
           </div>
-          <div class="agent-card-body">
-            <div class="thought-bubble">
-              <strong>🌍 Анализирую вакансию</strong>
-              Stripe · Senior PM · 100% remote · worldwide. Совпадение профиля: 87%. Зарплатная вилка: $140–180k. Рекомендую: адаптировать раздел «Достижения» под платёжные продукты.
-            </div>
-            <div class="thought-bubble">
-              <strong>✍️ Редактирую резюме</strong>
-              Переписываю под ATS Stripe. Добавляю remote-work signals: async communication, cross-timezone delivery, результаты в метриках...
-            </div>
 
-            <div class="action-log">
-              <div class="action-row action-done">
-                <div class="action-icon">✓</div>
-                Профиль собран и проанализирован
-              </div>
-              <div class="action-row action-done">
-                <div class="action-icon">✓</div>
-                Найдено 14 вакансий сегодня
-              </div>
-              <div class="action-row action-active">
-                <div class="action-icon">→</div>
-                Адаптирую резюме под Stripe <span class="typing-dots"><span></span><span></span><span></span></span>
-              </div>
-              <div class="action-row">
-                <div class="action-icon" style="opacity:0.4">○</div>
-                <span style="color: var(--text3);">Отправить заявку</span>
-              </div>
-              <div class="action-row">
-                <div class="action-icon" style="opacity:0.4">○</div>
-                <span style="color: var(--text3);">Запланировать мок-интервью</span>
-              </div>
+          <div class="match-divider"></div>
+
+          <div class="match-tags-label">Ключевые совпадения</div>
+          <div class="match-tags">
+            <span class="match-tag match-tag-yes">Payments experience</span>
+            <span class="match-tag match-tag-yes">Remote-first</span>
+            <span class="match-tag match-tag-yes">5+ лет PM</span>
+            <span class="match-tag match-tag-yes">B2B SaaS</span>
+            <span class="match-tag match-tag-no">Fintech — усилить</span>
+          </div>
+
+          <div class="match-divider"></div>
+
+          <div class="match-timeline">
+            <div class="match-step match-step-done">
+              <div class="match-step-dot"></div>
+              <div class="match-step-text">Вакансия найдена и проверена</div>
+            </div>
+            <div class="match-step match-step-done">
+              <div class="match-step-dot"></div>
+              <div class="match-step-text">Резюме адаптировано под ATS</div>
+            </div>
+            <div class="match-step match-step-done">
+              <div class="match-step-dot"></div>
+              <div class="match-step-text">Сопроводительное письмо готово</div>
+            </div>
+            <div class="match-step match-step-active">
+              <div class="match-step-dot"></div>
+              <div class="match-step-text">Отправляю заявку <span class="typing-dots"><span></span><span></span><span></span></span></div>
+            </div>
+            <div class="match-step match-step-pending">
+              <div class="match-step-dot"></div>
+              <div class="match-step-text">Ожидание ответа рекрутёра</div>
             </div>
           </div>
         </div>
@@ -1428,6 +1740,73 @@ footer {
         <div class="benefit-num">06</div>
         <h3>Переговоры по офферу</h3>
         <p>Агент анализирует рыночные данные и помогает обосновать более высокую зарплату — в среднем +18%.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section class="integrations" id="integrations">
+  <div class="integrations-inner">
+    <div class="integrations-header">
+      <div class="section-eyebrow">Интеграции</div>
+      <h2>Агент работает там,<br>где работаете <em>вы</em></h2>
+      <p class="section-lead">Подключите почту и Telegram — агент читает ответы рекрутёров, уведомляет о новых офферах и действует от вашего имени.</p>
+    </div>
+
+    <div class="intg-diagram-wrap">
+      <div class="intg-chip">
+        <div class="intg-chip-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#fff"/><path d="M6 13l12 8 12-8V26a1.5 1.5 0 01-1.5 1.5h-21A1.5 1.5 0 016 26V13z" fill="#EA4335"/><path d="M6 11h24l-12 9L6 11z" fill="url(#gm)"/><defs><linearGradient id="gm" x1="6" y1="11" x2="30" y2="11" gradientUnits="userSpaceOnUse"><stop stop-color="#EA4335"/><stop offset="0.5" stop-color="#FBBC04"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs></svg>
+        </div>
+        <span class="intg-chip-label">Gmail</span>
+      </div>
+
+      <div class="intg-connector"></div>
+
+      <div class="intg-hub">
+        <span class="intg-hub-label">Agent</span>
+      </div>
+
+      <div class="intg-connector intg-connector-rev"></div>
+
+      <div class="intg-chip">
+        <div class="intg-chip-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#2AABEE"/><path d="M8 17.5l16-7c.8-.35 1.5.1 1.25 1.05L22.5 24c-.25.9-.9 1.1-1.6.7l-4.3-3.2-2.1 1.9c-.2.2-.5.3-.9.3l.35-4.5 8.6-7.8c.35-.3 0-.45-.55-.15L10 17l-4.5-1.5c-1-.3-1-.95.2-1.7z" fill="white"/></svg>
+        </div>
+        <span class="intg-chip-label">Telegram</span>
+      </div>
+    </div>
+
+    <div class="intg-cards">
+      <div class="intg-card">
+        <div class="intg-card-icon" style="background:#fde8e8">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="13" rx="2" stroke="#EA4335" stroke-width="1.5"/><path d="M2 8l9 6 9-6" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="intg-card-body">
+          <h3>Email-интеграция</h3>
+          <p>Агент читает входящие письма от рекрутёров, анализирует офферы, отвечает на вопросы и согласовывает время интервью — от вашего имени.</p>
+        </div>
+      </div>
+      <div class="intg-card">
+        <div class="intg-card-icon" style="background:#e3f4fd">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l10-4.5c.5-.2.9.1.8.6L13.1 15c-.1.5-.6.7-1 .4l-2.7-2-1.3 1.2c-.1.1-.3.2-.6.2l.2-2.8 5.4-4.9c.2-.2 0-.3-.3-.1L6.2 11l-2.8-.9c-.6-.2-.6-.6.1-1z" fill="#2AABEE"/></svg>
+        </div>
+        <div class="intg-card-body">
+          <h3>Telegram-интеграция</h3>
+          <p>Агент подаёт заявки через Telegram-боты компаний, ведёт переписку с рекрутёрами в мессенджере и отвечает на вопросы — от вашего имени, пока вы занимаетесь жизнью.</p>
+          <div class="intg-security">
+            <div class="intg-security-title">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" fill="#2d7a4f" opacity="0.15"/><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" stroke="#2d7a4f" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 6.5l1.5 1.5 2.5-3" stroke="#2d7a4f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Безопасность
+            </div>
+            <ul class="intg-security-list">
+              <li>Доступ только к переписке с рекрутёрами — личные чаты закрыты</li>
+              <li>Никаких паролей — подключение через официальный Telegram Bot API</li>
+              <li>Отозвать доступ можно в один клик в любой момент</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
