@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Screenly — ИИ-агент для поиска глобальной удалённой работы</title>
+<title id="doc-title">Screenly — ИИ-агент для поиска глобальной удалённой работы</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -14,12 +14,24 @@
 <nav>
   <div class="nav-inner">
     <a class="logo" href="#">Screenly<span class="logo-dot">.</span></a>
-    <ul>
-      <li><a href="#how">Как работает</a></li>
-      <li><a href="#benefits">Преимущества</a></li>
-      <li><a href="#reviews">Истории</a></li>
-      <li><a href="#cta" class="nav-cta">Запустить агента</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#how" data-i18n="nav.how">Как работает</a></li>
+        <li><a href="#benefits" data-i18n="nav.benefits">Преимущества</a></li>
+        <li><a href="#reviews" data-i18n="nav.reviews">Истории</a></li>
+        <li><a href="#cta" class="nav-cta" data-i18n="nav.cta">Запустить агента</a></li>
+      </ul>
+      <label class="visually-hidden" for="lang-select" data-i18n="lang.label">Язык</label>
+      <select id="lang-select" class="lang-select">
+        <option value="ru">Русский</option>
+        <option value="kk">Қазақша</option>
+        <option value="uz">Oʻzbekcha</option>
+        <option value="ur">اردو (Pakistan)</option>
+        <option value="hi">हिन्दी (भारत)</option>
+        <option value="fa">فارسی</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+    </div>
   </div>
 </nav>
 
@@ -29,132 +41,26 @@
   <div class="hero-inner">
     <div class="agent-pill">
       <span class="agent-pill-dot"></span>
-      100% удалённые · только глобальные компании · агент активен
+      <span data-i18n="hero.pill">100% удалённые · только глобальные компании · агент активен</span>
     </div>
-    <h1>Только полная удалёнка.<br>Только <em>мировые<br>компании.</em></h1>
-    <p class="hero-sub">ИИ-агент находит только 100% удалённые вакансии в мировых компаниях, адаптирует резюме, подаёт заявки и готовит вас к интервью — пока вы занимаетесь жизнью.</p>
+    <h1 data-i18n-html="hero.title">Только полная удалёнка.<br>Только <em>мировые<br>компании.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">ИИ-агент находит только 100% удалённые вакансии в мировых компаниях, адаптирует резюме, подаёт заявки и готовит вас к интервью — пока вы занимаетесь жизнью.</p>
     <div class="hero-actions">
-      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer">Запустить агента</a>
+      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="hero.btn">Запустить агента</a>
     </div>
   </div>
 
   <!-- Live agent feed -->
   <div class="agent-feed">
     <div class="feed-header">
-      <span>Лог агента</span>
+      <span data-i18n="feed.header">Лог агента</span>
       <div class="feed-live">LIVE</div>
-      <span class="feed-counter" id="feed-counter">0 действий сегодня</span>
+      <span class="feed-counter" id="feed-counter">0</span>
     </div>
     <div class="feed-progress-bar"><div class="feed-progress-fill" id="feed-progress"></div></div>
     <div class="feed-list" id="feed-list"></div>
   </div>
 
-<script>
-(function() {
-  const events = [
-    { icon: '🌍', label: 'Сканирую базы вакансий', detail: 'We Work Remotely · Himalayas · LinkedIn · Remote.co', type: 'processing' },
-    { icon: '🔍', label: 'Найдено 3 новые позиции', detail: 'Stripe (США) · Linear (США) · Notion (США)', type: 'done' },
-    { icon: '🧠', label: 'Анализирую совпадение профиля', detail: 'Senior PM в Stripe — совпадение 87%', type: 'processing' },
-    { icon: '✍️', label: 'Адаптирую резюме', detail: 'Переписываю под ATS Stripe · добавляю remote-сигналы', type: 'processing' },
-    { icon: '✅', label: 'Резюме готово', detail: 'Senior PM · Stripe · 100% remote · $140–180k', type: 'done' },
-    { icon: '<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="animation:spin 3s linear infinite;transform-origin:center;display:block"><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(30 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(60 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(90 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(120 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(150 8 8)"/></svg>', label: 'Готовлю сопроводительное письмо', detail: 'Персонализирую под Senior PM · Stripe · remote-first культура', type: 'processing' },
-    { icon: '📨', label: 'Отправляю заявку', detail: 'Remote-first Product Lead · Loom Inc.', type: 'processing' },
-    { icon: '✅', label: 'Заявка отправлена', detail: 'Loom · подтверждение получено · жду ответа', type: 'done' },
-    { icon: '🌍', label: 'Ищу новые позиции', detail: 'Обновляю фильтры · только fully remote · worldwide', type: 'processing' },
-    { icon: '🔍', label: 'Найдено 2 позиции', detail: 'Figma (США) · Doist (Испания/удалённо)', type: 'done' },
-    { icon: '✍️', label: 'Адаптирую резюме под Figma', detail: 'Фокус на дизайн-системах и продуктовых метриках', type: 'processing' },
-    { icon: '📬', label: 'Читаю входящие письма', detail: 'Gmail · 3 новых ответа от рекрутеров · анализирую содержание', type: 'processing' },
-    { icon: '📨', label: 'Отправляю заявку в Figma', detail: 'Письмо персонализировано под Head of PM Figma', type: 'processing' },
-    { icon: '🔍', label: 'Мониторю статусы', detail: 'Stripe · Loom · Figma · Linear — все активны', type: 'processing' },
-    { icon: '🌍', label: 'Новый цикл поиска', detail: 'Shopify · Automattic · Zapier · Buffer проверены', type: 'processing' },
-  ];
-
-  const list = document.getElementById('feed-list');
-  const counter = document.getElementById('feed-counter');
-  const progress = document.getElementById('feed-progress');
-
-  const MAX_VISIBLE = 4;
-  const INTERVAL = 2800;
-  const PROGRESS_DURATION = INTERVAL - 200;
-
-  let idx = 0;
-  let count = 0;
-  let items = [];
-
-  function timeAgo(secsAgo) {
-    if (secsAgo < 60) return 'только что';
-    if (secsAgo < 120) return '1 мин назад';
-    return Math.floor(secsAgo / 60) + ' мин назад';
-  }
-
-  function addEvent() {
-    const ev = events[idx % events.length];
-    idx++;
-    count++;
-
-    const now = Date.now();
-    const item = { ...ev, ts: now };
-    items.push(item);
-    if (items.length > MAX_VISIBLE) items.shift();
-
-    render();
-    animateProgress();
-
-    counter.textContent = count + ' действи' + (count === 1 ? 'е' : count < 5 ? 'я' : 'й') + ' сегодня';
-  }
-
-  const ICON_DONE = '<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="#3a9e5f"/><polyline points="3.5,7 6,9.5 10.5,4.5" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-  const ICON_THINKING = '<svg width="15" height="15" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" style="animation:spin 3s linear infinite;transform-origin:center;display:block"><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(30 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(60 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(90 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(120 8 8)"/><ellipse cx="8" cy="3" rx="1.3" ry="3.2" fill="#D4856A" transform="rotate(150 8 8)"/></svg>';
-
-  function render() {
-    list.innerHTML = '';
-    items.forEach((item, i) => {
-      const isActive = i === items.length - 1;
-      const secsAgo = Math.round((Date.now() - item.ts) / 1000);
-      const div = document.createElement('div');
-      div.className = 'feed-item' + (isActive ? ' feed-active feed-new' : '');
-      const iconHtml = isActive ? ICON_THINKING : ICON_DONE;
-      div.innerHTML =
-        '<div class="feed-icon">' + iconHtml + '</div>' +
-        '<div class="feed-text">' +
-          '<div><strong>' + item.label + '</strong></div>' +
-          '<div style="font-size:12px;color:var(--text3);margin-top:2px">' + item.detail + '</div>' +
-          '<div class="feed-time">' + (isActive ? '<span style="color:var(--accent);font-weight:500">сейчас</span>' : timeAgo(secsAgo)) + '</div>' +
-        '</div>';
-      if (isActive && item.type === 'processing') {
-        const dots = document.createElement('span');
-        dots.className = 'typing-dots';
-        dots.style.cssText = 'margin-left:auto;align-self:center;flex-shrink:0';
-        dots.innerHTML = '<span></span><span></span><span></span>';
-        div.appendChild(dots);
-      }
-      list.appendChild(div);
-    });
-  }
-
-  function animateProgress() {
-    progress.style.transition = 'none';
-    progress.style.width = '0%';
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        progress.style.transition = 'width ' + PROGRESS_DURATION + 'ms linear';
-        progress.style.width = '100%';
-      });
-    });
-  }
-
-  addEvent();
-  setInterval(addEvent, INTERVAL);
-
-  setInterval(function() {
-    const now = Date.now();
-    const divs = list.querySelectorAll('.feed-item:not(.feed-active) .feed-time');
-    divs.forEach(function(el, i) {
-      if (items[i]) el.textContent = timeAgo(Math.round((now - items[i].ts) / 1000));
-    });
-  }, 15000);
-})();
-</script>
 </section>
 
 <!-- STATS -->
@@ -162,22 +68,22 @@
   <div class="stats-inner">
     <div class="stat">
       <div class="stat-num">100<em>%</em></div>
-      <div class="stat-label">только полностью<br>удалённые вакансии</div>
+      <div class="stat-label" data-i18n-html="stats.s1">только полностью<br>удалённые вакансии</div>
     </div>
     <div class="stat">
       <div class="stat-num">60<em>+</em></div>
-      <div class="stat-label">стран — компании,<br>нанимающие глобально</div>
+      <div class="stat-label" data-i18n-html="stats.s2">стран — компании,<br>нанимающие глобально</div>
     </div>
     <div class="stat">
       <div class="stat-num">94<em>%</em></div>
-      <div class="stat-label">получают оффер<br>за 6–8 недель</div>
+      <div class="stat-label" data-i18n-html="stats.s3">получают оффер<br>за 6–8 недель</div>
     </div>
   </div>
 </div>
 
 <!-- COMPANY TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-label">компании, нанимающие удалённо по всему миру</div>
+  <div class="ticker-label" data-i18n="ticker.label">компании, нанимающие удалённо по всему миру</div>
   <div class="ticker-track" id="ticker">
     <span class="ticker-item"><span class="ticker-item-dot"></span>Stripe</span>
     <span class="ticker-item"><span class="ticker-item-dot"></span>Notion</span>
@@ -227,15 +133,15 @@
     <ellipse cx="100" cy="100" rx="90" ry="65" stroke="white" stroke-width="0.5"/>
   </svg>
   <div class="globe-banner-inner">
-    <h3>Без офиса. Без границ.<br>Без компромиссов.</h3>
-    <p>Агент работает только с вакансиями, где работодатель нанимает глобально и готов платить вам — вне зависимости от того, где вы живёте.</p>
+    <h3 data-i18n-html="globe.title">Без офиса. Без границ.<br>Без компромиссов.</h3>
+    <p data-i18n="globe.p">Агент работает только с вакансиями, где работодатель нанимает глобально и готов платить вам — вне зависимости от того, где вы живёте.</p>
     <div class="region-pills">
-      <span class="region-pill"><span class="region-flag">🇺🇸</span> Северная Америка</span>
-      <span class="region-pill"><span class="region-flag">🇪🇺</span> Европа</span>
-      <span class="region-pill"><span class="region-flag">🇬🇧</span> Великобритания</span>
-      <span class="region-pill"><span class="region-flag">🌏</span> Азия / Тихий океан</span>
-      <span class="region-pill"><span class="region-flag">🌍</span> Африка и Ближний Восток</span>
-      <span class="region-pill"><span class="region-flag">🌎</span> Латинская Америка</span>
+      <span class="region-pill"><span class="region-flag">🇺🇸</span> <span data-i18n="globe.region.na">Северная Америка</span></span>
+      <span class="region-pill"><span class="region-flag">🇪🇺</span> <span data-i18n="globe.region.eu">Европа</span></span>
+      <span class="region-pill"><span class="region-flag">🇬🇧</span> <span data-i18n="globe.region.uk">Великобритания</span></span>
+      <span class="region-pill"><span class="region-flag">🌏</span> <span data-i18n="globe.region.asia">Азия / Тихий океан</span></span>
+      <span class="region-pill"><span class="region-flag">🌍</span> <span data-i18n="globe.region.mena">Африка и Ближний Восток</span></span>
+      <span class="region-pill"><span class="region-flag">🌎</span> <span data-i18n="globe.region.latam">Латинская Америка</span></span>
     </div>
   </div>
 </div>
@@ -245,41 +151,41 @@
   <div class="how-inner">
     <div class="how-layout">
       <div class="how-left">
-        <div class="section-eyebrow">Как работает агент</div>
-        <h2>Только глобальные<br><em>remote-компании.</em><br>Только реальные позиции.</h2>
-        <p class="section-lead">Никаких «возможно удалённых» или «частично из офиса». Агент работает исключительно с fully remote вакансиями по всему миру.</p>
+        <div class="section-eyebrow" data-i18n="how.eyebrow">Как работает агент</div>
+        <h2 data-i18n-html="how.h2">Только глобальные<br><em>remote-компании.</em><br>Только реальные позиции.</h2>
+        <p class="section-lead" data-i18n="how.lead">Никаких «возможно удалённых» или «частично из офиса». Агент работает исключительно с fully remote вакансиями по всему миру.</p>
 
         <div class="steps-list">
           <div class="step-row">
             <div class="step-num-wrap">1</div>
             <div class="step-content">
-              <span class="step-tag">Поиск</span>
-              <h3>Сканирует только 100% remote-вакансии</h3>
-              <p>Агент мониторит тысячи глобальных платформ — We Work Remotely, Remote.co, Himalayas, LinkedIn, закрытые доски — и фильтрует строго: только fully remote, без привязки к офису, из любой страны.</p>
+              <span class="step-tag" data-i18n="how.s1.tag">Поиск</span>
+              <h3 data-i18n="how.s1.h">Сканирует только 100% remote-вакансии</h3>
+              <p data-i18n="how.s1.p">Агент мониторит тысячи глобальных платформ — We Work Remotely, Remote.co, Himalayas, LinkedIn, закрытые доски — и фильтрует строго: только fully remote, без привязки к офису, из любой страны.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">2</div>
             <div class="step-content">
-              <span class="step-tag">Резюме</span>
-              <h3>Улучшает и адаптирует резюме</h3>
-              <p>Под каждую вакансию агент создаёт отдельную версию резюме и сопроводительного письма — с нужными ключевыми словами, акцентами и структурой под ATS-системы.</p>
+              <span class="step-tag" data-i18n="how.s2.tag">Резюме</span>
+              <h3 data-i18n="how.s2.h">Улучшает и адаптирует резюме</h3>
+              <p data-i18n="how.s2.p">Под каждую вакансию агент создаёт отдельную версию резюме и сопроводительного письма — с нужными ключевыми словами, акцентами и структурой под ATS-системы.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">3</div>
             <div class="step-content">
-              <span class="step-tag">Заявки</span>
-              <h3>Подаёт заявки автономно</h3>
-              <p>Агент отправляет заявки, ведёт переписку с рекрутёрами и отслеживает каждый статус — пока вы занимаетесь своими делами.</p>
+              <span class="step-tag" data-i18n="how.s3.tag">Заявки</span>
+              <h3 data-i18n="how.s3.h">Подаёт заявки автономно</h3>
+              <p data-i18n="how.s3.p">Агент отправляет заявки, ведёт переписку с рекрутёрами и отслеживает каждый статус — пока вы занимаетесь своими делами.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">4</div>
             <div class="step-content">
-              <span class="step-tag">Интервью</span>
-              <h3>Готовит к собеседованию</h3>
-              <p>Мок-интервью с обратной связью, разбор типичных вопросов и стратегия переговоров по офферу — агент помогает вам на каждом этапе до финала.</p>
+              <span class="step-tag" data-i18n="how.s4.tag">Интервью</span>
+              <h3 data-i18n="how.s4.h">Готовит к собеседованию</h3>
+              <p data-i18n="how.s4.p">Мок-интервью с обратной связью, разбор типичных вопросов и стратегия переговоров по офферу — агент помогает вам на каждом этапе до финала.</p>
             </div>
           </div>
         </div>
@@ -292,23 +198,23 @@
               <div class="match-company-logo">S</div>
               <div>
                 <div class="match-company-name">Stripe</div>
-                <div class="match-company-meta">США · 100% remote · worldwide</div>
+                <div class="match-company-meta" data-i18n="match.meta">США · 100% remote · worldwide</div>
               </div>
-              <div class="match-badge">87% совпадение</div>
+              <div class="match-badge" data-i18n="match.badge">87% совпадение</div>
             </div>
             <div class="match-role">Senior Product Manager</div>
-            <div class="match-salary">$140 000 – $180 000 / год</div>
+            <div class="match-salary" data-i18n="match.salary">$140 000 – $180 000 / год</div>
           </div>
 
           <div class="match-divider"></div>
 
-          <div class="match-tags-label">Ключевые совпадения</div>
+          <div class="match-tags-label" data-i18n="match.tagsLabel">Ключевые совпадения</div>
           <div class="match-tags">
             <span class="match-tag match-tag-yes">Payments experience</span>
             <span class="match-tag match-tag-yes">Remote-first</span>
-            <span class="match-tag match-tag-yes">5+ лет PM</span>
+            <span class="match-tag match-tag-yes" data-i18n="match.tagPm">5+ лет PM</span>
             <span class="match-tag match-tag-yes">B2B SaaS</span>
-            <span class="match-tag match-tag-no">Fintech — усилить</span>
+            <span class="match-tag match-tag-no" data-i18n="match.tagNo">Fintech — усилить</span>
           </div>
 
           <div class="match-divider"></div>
@@ -316,23 +222,23 @@
           <div class="match-timeline">
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text">Вакансия найдена и проверена</div>
+              <div class="match-step-text" data-i18n="match.step1">Вакансия найдена и проверена</div>
             </div>
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text">Резюме адаптировано под ATS</div>
+              <div class="match-step-text" data-i18n="match.step2">Резюме адаптировано под ATS</div>
             </div>
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text">Сопроводительное письмо готово</div>
+              <div class="match-step-text" data-i18n="match.step3">Сопроводительное письмо готово</div>
             </div>
             <div class="match-step match-step-active">
               <div class="match-step-dot"></div>
-              <div class="match-step-text">Отправляю заявку <span class="typing-dots"><span></span><span></span><span></span></span></div>
+              <div class="match-step-text" data-i18n-html="match.step4">Отправляю заявку <span class="typing-dots"><span></span><span></span><span></span></span></div>
             </div>
             <div class="match-step match-step-pending">
               <div class="match-step-dot"></div>
-              <div class="match-step-text">Ожидание ответа рекрутёра</div>
+              <div class="match-step-text" data-i18n="match.step5">Ожидание ответа рекрутёра</div>
             </div>
           </div>
         </div>
@@ -345,40 +251,40 @@
 <section class="benefits" id="benefits">
   <div class="benefits-inner">
     <div class="benefits-header">
-      <div class="section-eyebrow">Почему агент лучше</div>
-        <h2>Весь мировой рынок<br>удалённой работы —<br><em>в одном агенте</em></h2>
-        <p class="section-lead">Агент не ищет «рядом с домом». Он ищет лучшую работу в мире — там, где она есть.</p>
+      <div class="section-eyebrow" data-i18n="benefits.eyebrow">Почему агент лучше</div>
+        <h2 data-i18n-html="benefits.h2">Весь мировой рынок<br>удалённой работы —<br><em>в одном агенте</em></h2>
+        <p class="section-lead" data-i18n="benefits.lead">Агент не ищет «рядом с домом». Он ищет лучшую работу в мире — там, где она есть.</p>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
         <div class="benefit-num">01</div>
-        <h3>Работает 24/7</h3>
-        <p>Агент не спит, не уходит в отпуск и не отвлекается. Пока вы отдыхаете — он ищет, адаптирует и отправляет заявки.</p>
+        <h3 data-i18n="benefits.b1h">Работает 24/7</h3>
+        <p data-i18n="benefits.b1p">Агент не спит, не уходит в отпуск и не отвлекается. Пока вы отдыхаете — он ищет, адаптирует и отправляет заявки.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">02</div>
-        <h3>Только fully remote — без исключений</h3>
-        <p>Агент фильтрует жёстко: никаких hybrid, никаких «иногда из офиса». Только позиции, где вы работаете откуда угодно, навсегда.</p>
+        <h3 data-i18n="benefits.b2h">Только fully remote — без исключений</h3>
+        <p data-i18n="benefits.b2p">Агент фильтрует жёстко: никаких hybrid, никаких «иногда из офиса». Только позиции, где вы работаете откуда угодно, навсегда.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">03</div>
-        <h3>Компании из 60+ стран</h3>
-        <p>США, Европа, Азия, Латинская Америка — агент видит весь рынок. Лучшая работа не обязательно в соседней стране.</p>
+        <h3 data-i18n="benefits.b3h">Компании из 60+ стран</h3>
+        <p data-i18n="benefits.b3p">США, Европа, Азия, Латинская Америка — агент видит весь рынок. Лучшая работа не обязательно в соседней стране.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">04</div>
-        <h3>Резюме, которое проходит ATS</h3>
-        <p>Алгоритмы отсеивают большинство кандидатов до живого рекрутёра. Агент знает, как это обойти.</p>
+        <h3 data-i18n="benefits.b4h">Резюме, которое проходит ATS</h3>
+        <p data-i18n="benefits.b4p">Алгоритмы отсеивают большинство кандидатов до живого рекрутёра. Агент знает, как это обойти.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">05</div>
-        <h3>Мок-интервью с ИИ</h3>
-        <p>Реалистичные симуляции собеседований с детальным разбором ответов. Вы выходите на интервью подготовленным.</p>
+        <h3 data-i18n="benefits.b5h">Мок-интервью с ИИ</h3>
+        <p data-i18n="benefits.b5p">Реалистичные симуляции собеседований с детальным разбором ответов. Вы выходите на интервью подготовленным.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">06</div>
-        <h3>Переговоры по офферу</h3>
-        <p>Агент анализирует рыночные данные и помогает обосновать более высокую зарплату — в среднем +18%.</p>
+        <h3 data-i18n="benefits.b6h">Переговоры по офферу</h3>
+        <p data-i18n="benefits.b6p">Агент анализирует рыночные данные и помогает обосновать более высокую зарплату — в среднем +18%.</p>
       </div>
     </div>
   </div>
@@ -388,9 +294,9 @@
 <section class="integrations" id="integrations">
   <div class="integrations-inner">
     <div class="integrations-header">
-      <div class="section-eyebrow">Интеграции</div>
-      <h2>Агент работает там,<br>где работаете <em>вы</em></h2>
-      <p class="section-lead">Подключите почту и Telegram — агент читает ответы рекрутёров, уведомляет о новых офферах и действует от вашего имени.</p>
+      <div class="section-eyebrow" data-i18n="intg.eyebrow">Интеграции</div>
+      <h2 data-i18n-html="intg.h2">Агент работает там,<br>где работаете <em>вы</em></h2>
+      <p class="section-lead" data-i18n="intg.lead">Подключите почту и Telegram — агент читает ответы рекрутёров, уведомляет о новых офферах и действует от вашего имени.</p>
     </div>
 
     <div class="intg-diagram-wrap">
@@ -423,8 +329,8 @@
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="13" rx="2" stroke="#EA4335" stroke-width="1.5"/><path d="M2 8l9 6 9-6" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="intg-card-body">
-          <h3>Email-интеграция</h3>
-          <p>Агент читает входящие письма от рекрутёров, анализирует офферы, отвечает на вопросы и согласовывает время интервью — от вашего имени.</p>
+          <h3 data-i18n="intg.email.h">Email-интеграция</h3>
+          <p data-i18n="intg.email.p">Агент читает входящие письма от рекрутёров, анализирует офферы, отвечает на вопросы и согласовывает время интервью — от вашего имени.</p>
         </div>
       </div>
       <div class="intg-card">
@@ -432,17 +338,17 @@
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l10-4.5c.5-.2.9.1.8.6L13.1 15c-.1.5-.6.7-1 .4l-2.7-2-1.3 1.2c-.1.1-.3.2-.6.2l.2-2.8 5.4-4.9c.2-.2 0-.3-.3-.1L6.2 11l-2.8-.9c-.6-.2-.6-.6.1-1z" fill="#2AABEE"/></svg>
         </div>
         <div class="intg-card-body">
-          <h3>Telegram-интеграция</h3>
-          <p>Агент подаёт заявки через Telegram-боты компаний, ведёт переписку с рекрутёрами в мессенджере и отвечает на вопросы — от вашего имени, пока вы занимаетесь жизнью.</p>
+          <h3 data-i18n="intg.tg.h">Telegram-интеграция</h3>
+          <p data-i18n="intg.tg.p">Агент подаёт заявки через Telegram-боты компаний, ведёт переписку с рекрутёрами в мессенджере и отвечает на вопросы — от вашего имени, пока вы занимаетесь жизнью.</p>
           <div class="intg-security">
             <div class="intg-security-title">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" fill="#2d7a4f" opacity="0.15"/><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" stroke="#2d7a4f" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 6.5l1.5 1.5 2.5-3" stroke="#2d7a4f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Безопасность
+              <span data-i18n="intg.sec.title">Безопасность</span>
             </div>
             <ul class="intg-security-list">
-              <li>Доступ только к переписке с рекрутёрами — личные чаты закрыты</li>
-              <li>Никаких паролей — подключение через официальный Telegram Bot API</li>
-              <li>Отозвать доступ можно в один клик в любой момент</li>
+              <li data-i18n="intg.sec.li1">Доступ только к переписке с рекрутёрами — личные чаты закрыты</li>
+              <li data-i18n="intg.sec.li2">Никаких паролей — подключение через официальный Telegram Bot API</li>
+              <li data-i18n="intg.sec.li3">Отозвать доступ можно в один клик в любой момент</li>
             </ul>
           </div>
         </div>
@@ -455,37 +361,37 @@
 <section class="testimonials" id="reviews">
   <div class="testimonials-inner">
     <div class="testimonials-header">
-      <div class="section-eyebrow">Истории</div>
-      <h2>Они уже работают<br><em>удалённо</em></h2>
+      <div class="section-eyebrow" data-i18n="test.eyebrow">Истории</div>
+      <h2 data-i18n-html="test.h2">Они уже работают<br><em>удалённо</em></h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <span class="testimonial-quote">«Я просто загрузила резюме и рассказала о себе. Через 5 недель — оффер из США, полностью удалённо. Агент нашёл вакансию, о которой я даже не знала, что она существует.»</span>
+        <span class="testimonial-quote" data-i18n="test.q1">«Я просто загрузила резюме и рассказала о себе. Через 5 недель — оффер из США, полностью удалённо. Агент нашёл вакансию, о которой я даже не знала, что она существует.»</span>
         <div class="testimonial-author">
           <div class="avatar av1">АС</div>
           <div>
-            <span class="author-name">Алина Смирнова</span>
-            <span class="author-role">Product Manager · Stripe, Берлин</span>
+            <span class="author-name" data-i18n="test.n1">Алина Смирнова</span>
+            <span class="author-role" data-i18n="test.r1">Product Manager · Stripe, Берлин</span>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <span class="testimonial-quote">«Мок-интервью с агентом — лучшая подготовка из всего, что я пробовал. На реальном собеседовании в Amazon чувствовал себя уверенно.»</span>
+        <span class="testimonial-quote" data-i18n="test.q2">«Мок-интервью с агентом — лучшая подготовка из всего, что я пробовал. На реальном собеседовании в Amazon чувствовал себя уверенно.»</span>
         <div class="testimonial-author">
           <div class="avatar av2">ДМ</div>
           <div>
-            <span class="author-name">Дмитрий Морозов</span>
-            <span class="author-role">Software Engineer · Amazon, Лондон</span>
+            <span class="author-name" data-i18n="test.n2">Дмитрий Морозов</span>
+            <span class="author-role" data-i18n="test.r2">Software Engineer · Amazon, Лондон</span>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <span class="testimonial-quote">«Не верила, что ИИ сможет написать резюме лучше меня. Ошибалась. Агент переписал его так, что рекрутёры сами начали писать первыми.»</span>
+        <span class="testimonial-quote" data-i18n="test.q3">«Не верила, что ИИ сможет написать резюме лучше меня. Ошибалась. Агент переписал его так, что рекрутёры сами начали писать первыми.»</span>
         <div class="testimonial-author">
           <div class="avatar av3">МК</div>
           <div>
-            <span class="author-name">Мария Коваль</span>
-            <span class="author-role">UX Designer · Figma, Амстердам</span>
+            <span class="author-name" data-i18n="test.n3">Мария Коваль</span>
+            <span class="author-role" data-i18n="test.r3">UX Designer · Figma, Амстердам</span>
           </div>
         </div>
       </div>
@@ -496,10 +402,10 @@
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="cta-inner">
-    <h2>Ваша глобальная<br>remote-карьера<br>начинается здесь</h2>
-    <p>Расскажите о себе за 10 минут — агент начнёт искать вакансии по всему миру немедленно.</p>
-    <a href="#" class="btn-primary">Начать бесплатно</a>
-    <div class="cta-note">Бесплатный пробный период · Без карты · Отмена в любой момент</div>
+    <h2 data-i18n-html="cta.h2">Ваша глобальная<br>remote-карьера<br>начинается здесь</h2>
+    <p data-i18n="cta.p">Расскажите о себе за 10 минут — агент начнёт искать вакансии по всему миру немедленно.</p>
+    <a href="#" class="btn-primary" data-i18n="cta.btn">Начать бесплатно</a>
+    <div class="cta-note" data-i18n="cta.note">Бесплатный пробный период · Без карты · Отмена в любой момент</div>
   </div>
 </section>
 
@@ -508,13 +414,16 @@
   <div class="footer-inner">
     <a class="footer-logo" href="#">Screenly.</a>
     <div class="footer-links">
-      <a href="#">Конфиденциальность</a>
-      <a href="#">Условия</a>
-      <a href="#">Контакты</a>
+      <a href="#" data-i18n="footer.privacy">Конфиденциальность</a>
+      <a href="#" data-i18n="footer.terms">Условия</a>
+      <a href="#" data-i18n="footer.contact">Контакты</a>
     </div>
-    <span class="footer-copy">© 2025 Screenly</span>
+    <span class="footer-copy" id="footer-copy" data-i18n="footer.copy">© 2026 Screenly</span>
   </div>
 </footer>
+
+<script src="site-i18n.js" defer></script>
+<script src="site-i18n-locales.js" defer></script>
 
 </body>
 </html>
