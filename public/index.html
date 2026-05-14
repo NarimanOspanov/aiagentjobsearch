@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="doc-title">Screenly — ИИ-агент для поиска глобальной удалённой работы</title>
+<title id="doc-title">Screenly — AI agent for global remote job search</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -16,13 +16,14 @@
     <a class="logo" href="#">Screenly<span class="logo-dot">.</span></a>
     <div class="nav-right">
       <ul>
-        <li><a href="#how" data-i18n="nav.how">Как работает</a></li>
-        <li><a href="#benefits" data-i18n="nav.benefits">Преимущества</a></li>
-        <li><a href="#reviews" data-i18n="nav.reviews">Истории</a></li>
-        <li><a href="#cta" class="nav-cta" data-i18n="nav.cta">Запустить агента</a></li>
+        <li><a href="#how" data-i18n="nav.how">How it works</a></li>
+        <li><a href="#benefits" data-i18n="nav.benefits">Benefits</a></li>
+        <li><a href="#reviews" data-i18n="nav.reviews">Stories</a></li>
+        <li><a href="https://t.me/apply_jobs_bot" class="nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">Launch the agent</a></li>
       </ul>
-      <label class="visually-hidden" for="lang-select" data-i18n="lang.label">Язык</label>
+      <label class="visually-hidden" for="lang-select" data-i18n="lang.label">Language</label>
       <select id="lang-select" class="lang-select">
+        <option value="en">English</option>
         <option value="ru">Русский</option>
         <option value="kk">Қазақша</option>
         <option value="uz">Oʻzbekcha</option>
@@ -41,19 +42,19 @@
   <div class="hero-inner">
     <div class="agent-pill">
       <span class="agent-pill-dot"></span>
-      <span data-i18n="hero.pill">100% удалённые · только глобальные компании · агент активен</span>
+      <span data-i18n="hero.pill">100% remote · global companies only · agent active</span>
     </div>
-    <h1 data-i18n-html="hero.title">Только полная удалёнка.<br>Только <em>мировые<br>компании.</em></h1>
-    <p class="hero-sub" data-i18n="hero.sub">ИИ-агент находит только 100% удалённые вакансии в мировых компаниях, адаптирует резюме, подаёт заявки и готовит вас к интервью — пока вы занимаетесь жизнью.</p>
+    <h1 data-i18n-html="hero.title">Fully remote only.<br>Only <em>world-class<br>companies.</em></h1>
+    <p class="hero-sub" data-i18n="hero.sub">The AI agent finds only 100% remote openings at global companies, tailors your résumé, submits applications, and prepares you for interviews — while you get on with life.</p>
     <div class="hero-actions">
-      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="hero.btn">Запустить агента</a>
+      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="hero.btn">Launch the agent</a>
     </div>
   </div>
 
   <!-- Live agent feed -->
   <div class="agent-feed">
     <div class="feed-header">
-      <span data-i18n="feed.header">Лог агента</span>
+      <span data-i18n="feed.header">Agent log</span>
       <div class="feed-live">LIVE</div>
       <span class="feed-counter" id="feed-counter">0</span>
     </div>
@@ -68,22 +69,22 @@
   <div class="stats-inner">
     <div class="stat">
       <div class="stat-num">100<em>%</em></div>
-      <div class="stat-label" data-i18n-html="stats.s1">только полностью<br>удалённые вакансии</div>
+      <div class="stat-label" data-i18n-html="stats.s1">only fully<br>remote roles</div>
     </div>
     <div class="stat">
       <div class="stat-num">60<em>+</em></div>
-      <div class="stat-label" data-i18n-html="stats.s2">стран — компании,<br>нанимающие глобально</div>
+      <div class="stat-label" data-i18n-html="stats.s2">companies hiring<br>across borders</div>
     </div>
     <div class="stat">
       <div class="stat-num">94<em>%</em></div>
-      <div class="stat-label" data-i18n-html="stats.s3">получают оффер<br>за 6–8 недель</div>
+      <div class="stat-label" data-i18n-html="stats.s3">land an offer<br>in 6–8 weeks</div>
     </div>
   </div>
 </div>
 
 <!-- COMPANY TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker-label" data-i18n="ticker.label">компании, нанимающие удалённо по всему миру</div>
+  <div class="ticker-label" data-i18n="ticker.label">companies hiring remotely worldwide</div>
   <div class="ticker-track" id="ticker">
     <span class="ticker-item"><span class="ticker-item-dot"></span>Stripe</span>
     <span class="ticker-item"><span class="ticker-item-dot"></span>Notion</span>
@@ -133,15 +134,15 @@
     <ellipse cx="100" cy="100" rx="90" ry="65" stroke="white" stroke-width="0.5"/>
   </svg>
   <div class="globe-banner-inner">
-    <h3 data-i18n-html="globe.title">Без офиса. Без границ.<br>Без компромиссов.</h3>
-    <p data-i18n="globe.p">Агент работает только с вакансиями, где работодатель нанимает глобально и готов платить вам — вне зависимости от того, где вы живёте.</p>
+    <h3 data-i18n-html="globe.title">No office. No borders.<br>No compromises.</h3>
+    <p data-i18n="globe.p">The agent only works openings where the employer hires globally and is ready to pay you — no matter where you live.</p>
     <div class="region-pills">
-      <span class="region-pill"><span class="region-flag">🇺🇸</span> <span data-i18n="globe.region.na">Северная Америка</span></span>
-      <span class="region-pill"><span class="region-flag">🇪🇺</span> <span data-i18n="globe.region.eu">Европа</span></span>
-      <span class="region-pill"><span class="region-flag">🇬🇧</span> <span data-i18n="globe.region.uk">Великобритания</span></span>
-      <span class="region-pill"><span class="region-flag">🌏</span> <span data-i18n="globe.region.asia">Азия / Тихий океан</span></span>
-      <span class="region-pill"><span class="region-flag">🌍</span> <span data-i18n="globe.region.mena">Африка и Ближний Восток</span></span>
-      <span class="region-pill"><span class="region-flag">🌎</span> <span data-i18n="globe.region.latam">Латинская Америка</span></span>
+      <span class="region-pill"><span class="region-flag">🇺🇸</span> <span data-i18n="globe.region.na">North America</span></span>
+      <span class="region-pill"><span class="region-flag">🇪🇺</span> <span data-i18n="globe.region.eu">Europe</span></span>
+      <span class="region-pill"><span class="region-flag">🇬🇧</span> <span data-i18n="globe.region.uk">United Kingdom</span></span>
+      <span class="region-pill"><span class="region-flag">🌏</span> <span data-i18n="globe.region.asia">Asia / Pacific</span></span>
+      <span class="region-pill"><span class="region-flag">🌍</span> <span data-i18n="globe.region.mena">Africa & Middle East</span></span>
+      <span class="region-pill"><span class="region-flag">🌎</span> <span data-i18n="globe.region.latam">Latin America</span></span>
     </div>
   </div>
 </div>
@@ -151,41 +152,41 @@
   <div class="how-inner">
     <div class="how-layout">
       <div class="how-left">
-        <div class="section-eyebrow" data-i18n="how.eyebrow">Как работает агент</div>
-        <h2 data-i18n-html="how.h2">Только глобальные<br><em>remote-компании.</em><br>Только реальные позиции.</h2>
-        <p class="section-lead" data-i18n="how.lead">Никаких «возможно удалённых» или «частично из офиса». Агент работает исключительно с fully remote вакансиями по всему миру.</p>
+        <div class="section-eyebrow" data-i18n="how.eyebrow">How the agent works</div>
+        <h2 data-i18n-html="how.h2">Only global<br><em>remote-first companies.</em><br>Only real roles.</h2>
+        <p class="section-lead" data-i18n="how.lead">No “maybe remote” or “partly from the office.” The agent works exclusively with fully remote openings worldwide.</p>
 
         <div class="steps-list">
           <div class="step-row">
             <div class="step-num-wrap">1</div>
             <div class="step-content">
-              <span class="step-tag" data-i18n="how.s1.tag">Поиск</span>
-              <h3 data-i18n="how.s1.h">Сканирует только 100% remote-вакансии</h3>
-              <p data-i18n="how.s1.p">Агент мониторит тысячи глобальных платформ — We Work Remotely, Remote.co, Himalayas, LinkedIn, закрытые доски — и фильтрует строго: только fully remote, без привязки к офису, из любой страны.</p>
+              <span class="step-tag" data-i18n="how.s1.tag">Search</span>
+              <h3 data-i18n="how.s1.h">Scans only 100% remote openings</h3>
+              <p data-i18n="how.s1.p">The agent monitors thousands of global platforms — We Work Remotely, Remote.co, Himalayas, LinkedIn, private boards — and filters strictly: fully remote only, no office tie-in, from any country.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">2</div>
             <div class="step-content">
-              <span class="step-tag" data-i18n="how.s2.tag">Резюме</span>
-              <h3 data-i18n="how.s2.h">Улучшает и адаптирует резюме</h3>
-              <p data-i18n="how.s2.p">Под каждую вакансию агент создаёт отдельную версию резюме и сопроводительного письма — с нужными ключевыми словами, акцентами и структурой под ATS-системы.</p>
+              <span class="step-tag" data-i18n="how.s2.tag">Résumé</span>
+              <h3 data-i18n="how.s2.h">Improves and tailors your résumé</h3>
+              <p data-i18n="how.s2.p">For each role the agent builds a separate résumé and cover letter — with the right keywords, emphasis, and structure for ATS systems.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">3</div>
             <div class="step-content">
-              <span class="step-tag" data-i18n="how.s3.tag">Заявки</span>
-              <h3 data-i18n="how.s3.h">Подаёт заявки автономно</h3>
-              <p data-i18n="how.s3.p">Агент отправляет заявки, ведёт переписку с рекрутёрами и отслеживает каждый статус — пока вы занимаетесь своими делами.</p>
+              <span class="step-tag" data-i18n="how.s3.tag">Applications</span>
+              <h3 data-i18n="how.s3.h">Submits applications autonomously</h3>
+              <p data-i18n="how.s3.p">The agent sends applications, corresponds with recruiters, and tracks every status — while you focus on your own work.</p>
             </div>
           </div>
           <div class="step-row">
             <div class="step-num-wrap">4</div>
             <div class="step-content">
-              <span class="step-tag" data-i18n="how.s4.tag">Интервью</span>
-              <h3 data-i18n="how.s4.h">Готовит к собеседованию</h3>
-              <p data-i18n="how.s4.p">Мок-интервью с обратной связью, разбор типичных вопросов и стратегия переговоров по офферу — агент помогает вам на каждом этапе до финала.</p>
+              <span class="step-tag" data-i18n="how.s4.tag">Interview</span>
+              <h3 data-i18n="how.s4.h">Interview prep</h3>
+              <p data-i18n="how.s4.p">Mock interviews with feedback, review of typical questions, and offer-negotiation strategy — the agent supports you at every stage through to the final round.</p>
             </div>
           </div>
         </div>
@@ -198,23 +199,23 @@
               <div class="match-company-logo">S</div>
               <div>
                 <div class="match-company-name">Stripe</div>
-                <div class="match-company-meta" data-i18n="match.meta">США · 100% remote · worldwide</div>
+                <div class="match-company-meta" data-i18n="match.meta">US · 100% remote · worldwide</div>
               </div>
-              <div class="match-badge" data-i18n="match.badge">87% совпадение</div>
+              <div class="match-badge" data-i18n="match.badge">87% match</div>
             </div>
             <div class="match-role">Senior Product Manager</div>
-            <div class="match-salary" data-i18n="match.salary">$140 000 – $180 000 / год</div>
+            <div class="match-salary" data-i18n="match.salary">$140,000 – $180,000 / year</div>
           </div>
 
           <div class="match-divider"></div>
 
-          <div class="match-tags-label" data-i18n="match.tagsLabel">Ключевые совпадения</div>
+          <div class="match-tags-label" data-i18n="match.tagsLabel">Key matches</div>
           <div class="match-tags">
             <span class="match-tag match-tag-yes">Payments experience</span>
             <span class="match-tag match-tag-yes">Remote-first</span>
-            <span class="match-tag match-tag-yes" data-i18n="match.tagPm">5+ лет PM</span>
+            <span class="match-tag match-tag-yes" data-i18n="match.tagPm">5+ years PM</span>
             <span class="match-tag match-tag-yes">B2B SaaS</span>
-            <span class="match-tag match-tag-no" data-i18n="match.tagNo">Fintech — усилить</span>
+            <span class="match-tag match-tag-no" data-i18n="match.tagNo">Fintech — strengthen</span>
           </div>
 
           <div class="match-divider"></div>
@@ -222,23 +223,23 @@
           <div class="match-timeline">
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step1">Вакансия найдена и проверена</div>
+              <div class="match-step-text" data-i18n="match.step1">Role found and verified</div>
             </div>
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step2">Резюме адаптировано под ATS</div>
+              <div class="match-step-text" data-i18n="match.step2">Résumé tailored for ATS</div>
             </div>
             <div class="match-step match-step-done">
               <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step3">Сопроводительное письмо готово</div>
+              <div class="match-step-text" data-i18n="match.step3">Cover letter ready</div>
             </div>
             <div class="match-step match-step-active">
               <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n-html="match.step4">Отправляю заявку <span class="typing-dots"><span></span><span></span><span></span></span></div>
+              <div class="match-step-text" data-i18n-html="match.step4">Submitting application <span class="typing-dots"><span></span><span></span><span></span></span></div>
             </div>
             <div class="match-step match-step-pending">
               <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step5">Ожидание ответа рекрутёра</div>
+              <div class="match-step-text" data-i18n="match.step5">Awaiting recruiter reply</div>
             </div>
           </div>
         </div>
@@ -251,40 +252,40 @@
 <section class="benefits" id="benefits">
   <div class="benefits-inner">
     <div class="benefits-header">
-      <div class="section-eyebrow" data-i18n="benefits.eyebrow">Почему агент лучше</div>
-        <h2 data-i18n-html="benefits.h2">Весь мировой рынок<br>удалённой работы —<br><em>в одном агенте</em></h2>
-        <p class="section-lead" data-i18n="benefits.lead">Агент не ищет «рядом с домом». Он ищет лучшую работу в мире — там, где она есть.</p>
+      <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why the agent wins</div>
+        <h2 data-i18n-html="benefits.h2">The entire global<br>remote job market —<br><em>in one agent</em></h2>
+        <p class="section-lead" data-i18n="benefits.lead">The agent does not look “near home.” It looks for the best job in the world — wherever that is.</p>
     </div>
     <div class="benefits-grid">
       <div class="benefit-card">
         <div class="benefit-num">01</div>
-        <h3 data-i18n="benefits.b1h">Работает 24/7</h3>
-        <p data-i18n="benefits.b1p">Агент не спит, не уходит в отпуск и не отвлекается. Пока вы отдыхаете — он ищет, адаптирует и отправляет заявки.</p>
+        <h3 data-i18n="benefits.b1h">Runs 24/7</h3>
+        <p data-i18n="benefits.b1p">The agent does not sleep, take vacation, or get sidetracked. While you rest, it searches, tailors, and submits applications.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">02</div>
-        <h3 data-i18n="benefits.b2h">Только fully remote — без исключений</h3>
-        <p data-i18n="benefits.b2p">Агент фильтрует жёстко: никаких hybrid, никаких «иногда из офиса». Только позиции, где вы работаете откуда угодно, навсегда.</p>
+        <h3 data-i18n="benefits.b2h">Fully remote only — no exceptions</h3>
+        <p data-i18n="benefits.b2p">Strict filtering: no hybrid, no “sometimes from the office.” Only roles where you work from anywhere, for good.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">03</div>
-        <h3 data-i18n="benefits.b3h">Компании из 60+ стран</h3>
-        <p data-i18n="benefits.b3p">США, Европа, Азия, Латинская Америка — агент видит весь рынок. Лучшая работа не обязательно в соседней стране.</p>
+        <h3 data-i18n="benefits.b3h">Companies from 60+ countries</h3>
+        <p data-i18n="benefits.b3p">US, Europe, Asia, Latin America — the agent sees the whole market. The best role is not always in the next country over.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">04</div>
-        <h3 data-i18n="benefits.b4h">Резюме, которое проходит ATS</h3>
-        <p data-i18n="benefits.b4p">Алгоритмы отсеивают большинство кандидатов до живого рекрутёра. Агент знает, как это обойти.</p>
+        <h3 data-i18n="benefits.b4h">Résumés that pass ATS</h3>
+        <p data-i18n="benefits.b4p">Algorithms filter out most candidates before a human recruiter ever sees them. The agent knows how to get through.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">05</div>
-        <h3 data-i18n="benefits.b5h">Мок-интервью с ИИ</h3>
-        <p data-i18n="benefits.b5p">Реалистичные симуляции собеседований с детальным разбором ответов. Вы выходите на интервью подготовленным.</p>
+        <h3 data-i18n="benefits.b5h">AI mock interviews</h3>
+        <p data-i18n="benefits.b5p">Realistic interview practice with detailed answer review. You walk into the real interview prepared.</p>
       </div>
       <div class="benefit-card">
         <div class="benefit-num">06</div>
-        <h3 data-i18n="benefits.b6h">Переговоры по офферу</h3>
-        <p data-i18n="benefits.b6p">Агент анализирует рыночные данные и помогает обосновать более высокую зарплату — в среднем +18%.</p>
+        <h3 data-i18n="benefits.b6h">Offer negotiation</h3>
+        <p data-i18n="benefits.b6p">The agent analyzes market data and helps you justify a higher salary — on average about +18%.</p>
       </div>
     </div>
   </div>
@@ -294,9 +295,9 @@
 <section class="integrations" id="integrations">
   <div class="integrations-inner">
     <div class="integrations-header">
-      <div class="section-eyebrow" data-i18n="intg.eyebrow">Интеграции</div>
-      <h2 data-i18n-html="intg.h2">Агент работает там,<br>где работаете <em>вы</em></h2>
-      <p class="section-lead" data-i18n="intg.lead">Подключите почту и Telegram — агент читает ответы рекрутёров, уведомляет о новых офферах и действует от вашего имени.</p>
+      <div class="section-eyebrow" data-i18n="intg.eyebrow">Integrations</div>
+      <h2 data-i18n-html="intg.h2">The agent works where<br><em>you</em> work</h2>
+      <p class="section-lead" data-i18n="intg.lead">Connect your Gmail and a dedicated browser — the agent reads mail (including confirmations), applies on employer sites like a human would, and keeps you updated.</p>
     </div>
 
     <div class="intg-diagram-wrap">
@@ -316,10 +317,10 @@
       <div class="intg-connector intg-connector-rev"></div>
 
       <div class="intg-chip">
-        <div class="intg-chip-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#2AABEE"/><path d="M8 17.5l16-7c.8-.35 1.5.1 1.25 1.05L22.5 24c-.25.9-.9 1.1-1.6.7l-4.3-3.2-2.1 1.9c-.2.2-.5.3-.9.3l.35-4.5 8.6-7.8c.35-.3 0-.45-.55-.15L10 17l-4.5-1.5c-1-.3-1-.95.2-1.7z" fill="white"/></svg>
+        <div class="intg-chip-icon intg-chip-icon-browser">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#fff"/><rect x="8" y="10" width="20" height="16" rx="2" stroke="#5c6bc0" stroke-width="1.4"/><path fill="#e8eaf6" d="M8 10h20v5H8z"/><circle cx="11.5" cy="12.5" r="1" fill="#9fa8da"/><circle cx="15" cy="12.5" r="1" fill="#9fa8da"/><circle cx="18.5" cy="12.5" r="1" fill="#9fa8da"/><path d="M11 19h14M11 23h10" stroke="#5c6bc0" stroke-width="1.2" stroke-linecap="round"/></svg>
         </div>
-        <span class="intg-chip-label">Telegram</span>
+        <span class="intg-chip-label" data-i18n="intg.browser.chip">Browser</span>
       </div>
     </div>
 
@@ -329,28 +330,28 @@
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="13" rx="2" stroke="#EA4335" stroke-width="1.5"/><path d="M2 8l9 6 9-6" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
         <div class="intg-card-body">
-          <h3 data-i18n="intg.email.h">Email-интеграция</h3>
-          <p data-i18n="intg.email.p">Агент читает входящие письма от рекрутёров, анализирует офферы, отвечает на вопросы и согласовывает время интервью — от вашего имени.</p>
-        </div>
-      </div>
-      <div class="intg-card">
-        <div class="intg-card-icon" style="background:#e3f4fd">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 11.5l10-4.5c.5-.2.9.1.8.6L13.1 15c-.1.5-.6.7-1 .4l-2.7-2-1.3 1.2c-.1.1-.3.2-.6.2l.2-2.8 5.4-4.9c.2-.2 0-.3-.3-.1L6.2 11l-2.8-.9c-.6-.2-.6-.6.1-1z" fill="#2AABEE"/></svg>
-        </div>
-        <div class="intg-card-body">
-          <h3 data-i18n="intg.tg.h">Telegram-интеграция</h3>
-          <p data-i18n="intg.tg.p">Агент подаёт заявки через Telegram-боты компаний, ведёт переписку с рекрутёрами в мессенджере и отвечает на вопросы — от вашего имени, пока вы занимаетесь жизнью.</p>
+          <h3 data-i18n="intg.email.h">Email integration</h3>
+          <p data-i18n="intg.email.p">The agent uses your inbox for confirmation emails, and verification links — so an application does not stall when a site asks you to confirm by mail.</p>
           <div class="intg-security">
             <div class="intg-security-title">
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" fill="#2d7a4f" opacity="0.15"/><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" stroke="#2d7a4f" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 6.5l1.5 1.5 2.5-3" stroke="#2d7a4f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-i18n="intg.sec.title">Безопасность</span>
+              <span data-i18n="intg.sec.title">Security</span>
             </div>
             <ul class="intg-security-list">
-              <li data-i18n="intg.sec.li1">Доступ только к переписке с рекрутёрами — личные чаты закрыты</li>
-              <li data-i18n="intg.sec.li2">Никаких паролей — подключение через официальный Telegram Bot API</li>
-              <li data-i18n="intg.sec.li3">Отозвать доступ можно в один клик в любой момент</li>
+              <li data-i18n="intg.sec.li1">Uses OAuth 2 — Gmail connects through Google's official OAuth 2 authorization; we never store your password.</li>
+              <li data-i18n="intg.sec.li2">Scoped access — recruiter threads and application flows only; the rest of your inbox stays private</li>
+              <li data-i18n="intg.sec.li3">Browser automation only on sites you authorize; revoke access in one click at any time</li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div class="intg-card">
+        <div class="intg-card-icon" style="background:#ede7f6">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="4" width="16" height="13" rx="1.5" stroke="#5c6bc0" stroke-width="1.3"/><path fill="#e8eaf6" d="M3 4h16v4H3z"/><circle cx="5.5" cy="6" r="0.6" fill="#9fa8da"/><circle cx="7.5" cy="6" r="0.6" fill="#9fa8da"/><circle cx="9.5" cy="6" r="0.6" fill="#9fa8da"/><path d="M5 11h12M5 14h8" stroke="#5c6bc0" stroke-width="1" stroke-linecap="round"/></svg>
+        </div>
+        <div class="intg-card-body">
+          <h3 data-i18n="intg.browser.h">The agent's browser on the agent's computer for applications</h3>
+          <p data-i18n="intg.browser.p">The agent opens employer career portals in a controlled browser and applies the way you would: follow each step, upload your résumé, and submit — including confirmations when the flow requires it.</p>
         </div>
       </div>
     </div>
@@ -361,37 +362,37 @@
 <section class="testimonials" id="reviews">
   <div class="testimonials-inner">
     <div class="testimonials-header">
-      <div class="section-eyebrow" data-i18n="test.eyebrow">Истории</div>
-      <h2 data-i18n-html="test.h2">Они уже работают<br><em>удалённо</em></h2>
+      <div class="section-eyebrow" data-i18n="test.eyebrow">Stories</div>
+      <h2 data-i18n-html="test.h2">They are already working<br><em>remotely</em></h2>
     </div>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q1">«Я просто загрузила резюме и рассказала о себе. Через 5 недель — оффер из США, полностью удалённо. Агент нашёл вакансию, о которой я даже не знала, что она существует.»</span>
+        <span class="testimonial-quote" data-i18n="test.q1">“I just uploaded my résumé and told my story. Five weeks later — a fully remote offer from the US. The agent found a role I did not even know existed.”</span>
         <div class="testimonial-author">
-          <div class="avatar av1">АС</div>
+          <div class="avatar av1">AS</div>
           <div>
-            <span class="author-name" data-i18n="test.n1">Алина Смирнова</span>
-            <span class="author-role" data-i18n="test.r1">Product Manager · Stripe, Берлин</span>
+            <span class="author-name" data-i18n="test.n1">Alina Smirnova</span>
+            <span class="author-role" data-i18n="test.r1">Product Manager · Stripe, Berlin</span>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q2">«Мок-интервью с агентом — лучшая подготовка из всего, что я пробовал. На реальном собеседовании в Amazon чувствовал себя уверенно.»</span>
+        <span class="testimonial-quote" data-i18n="test.q2">“Mock interviews with the agent were the best prep I have tried. I felt confident in the real Amazon interview.”</span>
         <div class="testimonial-author">
-          <div class="avatar av2">ДМ</div>
+          <div class="avatar av2">DM</div>
           <div>
-            <span class="author-name" data-i18n="test.n2">Дмитрий Морозов</span>
-            <span class="author-role" data-i18n="test.r2">Software Engineer · Amazon, Лондон</span>
+            <span class="author-name" data-i18n="test.n2">Dmitry Morozov</span>
+            <span class="author-role" data-i18n="test.r2">Software Engineer · Amazon, London</span>
           </div>
         </div>
       </div>
       <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q3">«Не верила, что ИИ сможет написать резюме лучше меня. Ошибалась. Агент переписал его так, что рекрутёры сами начали писать первыми.»</span>
+        <span class="testimonial-quote" data-i18n="test.q3">“I did not believe AI could write a better résumé than I could. I was wrong. The agent rewrote it so recruiters started reaching out first.”</span>
         <div class="testimonial-author">
-          <div class="avatar av3">МК</div>
+          <div class="avatar av3">MK</div>
           <div>
-            <span class="author-name" data-i18n="test.n3">Мария Коваль</span>
-            <span class="author-role" data-i18n="test.r3">UX Designer · Figma, Амстердам</span>
+            <span class="author-name" data-i18n="test.n3">Maria Koval</span>
+            <span class="author-role" data-i18n="test.r3">UX Designer · Figma, Amsterdam</span>
           </div>
         </div>
       </div>
@@ -402,10 +403,10 @@
 <!-- CTA -->
 <section class="cta-section" id="cta">
   <div class="cta-inner">
-    <h2 data-i18n-html="cta.h2">Ваша глобальная<br>remote-карьера<br>начинается здесь</h2>
-    <p data-i18n="cta.p">Расскажите о себе за 10 минут — агент начнёт искать вакансии по всему миру немедленно.</p>
-    <a href="#" class="btn-primary" data-i18n="cta.btn">Начать бесплатно</a>
-    <div class="cta-note" data-i18n="cta.note">Бесплатный пробный период · Без карты · Отмена в любой момент</div>
+    <h2 data-i18n-html="cta.h2">Your global<br>remote career<br>starts here</h2>
+    <p data-i18n="cta.p">Tell us about yourself in 10 minutes — the agent starts searching worldwide immediately.</p>
+    <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="cta.btn">Start free</a>
+    <div class="cta-note" data-i18n="cta.note">Free trial · No card required · Cancel anytime</div>
   </div>
 </section>
 
@@ -414,9 +415,9 @@
   <div class="footer-inner">
     <a class="footer-logo" href="#">Screenly.</a>
     <div class="footer-links">
-      <a href="#" data-i18n="footer.privacy">Конфиденциальность</a>
-      <a href="#" data-i18n="footer.terms">Условия</a>
-      <a href="#" data-i18n="footer.contact">Контакты</a>
+      <a href="#" data-i18n="footer.privacy">Privacy</a>
+      <a href="#" data-i18n="footer.terms">Terms</a>
+      <a href="#" data-i18n="footer.contact">Contact</a>
     </div>
     <span class="footer-copy" id="footer-copy" data-i18n="footer.copy">© 2026 Screenly</span>
   </div>

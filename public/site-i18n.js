@@ -3,7 +3,7 @@
 (function () {
   var STORAGE_KEY = 'screenly-lang';
   var RTL_LANGS = ['ur', 'fa'];
-  var HTML_LANG = { ru: 'ru', kk: 'kk', uz: 'uz', ur: 'ur', hi: 'hi', fa: 'fa', id: 'id' };
+  var HTML_LANG = { en: 'en', ru: 'ru', kk: 'kk', uz: 'uz', ur: 'ur', hi: 'hi', fa: 'fa', id: 'id' };
 
   var ICON_DONE =
     '<svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg"><circle cx="7" cy="7" r="7" fill="#3a9e5f"/><polyline points="3.5,7 6,9.5 10.5,4.5" fill="none" stroke="white" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -38,6 +38,9 @@
 
   var FEED_COUNTER = {
     ru: feedCounterRu,
+    en: function (n) {
+      return n + ' actions today';
+    },
     kk: function (n) {
       return 'Бүгін ' + n + ' әрекет';
     },
@@ -60,6 +63,9 @@
 
   var FEED_TIME = {
     ru: feedTimeRu,
+    en: function (secs) {
+      return feedTimeTpl('just now', '1 min ago', '{n} min ago', secs);
+    },
     kk: function (secs) {
       return feedTimeTpl('дәл қазір', '1 мин бұрын', '{n} мин бұрын', secs);
     },
@@ -180,7 +186,8 @@
       'match.step5': 'Ожидание ответа рекрутёра',
       'benefits.eyebrow': 'Почему агент лучше',
       'benefits.h2': 'Весь мировой рынок<br>удалённой работы —<br><em>в одном агенте</em>',
-      'benefits.lead': 'Агент не ищет «рядом с домом». Он ищет лучшую работу в мире — там, где она есть.',
+      'benefits.lead':
+        'Агент ищет не просто удалёнку. Он ищет полную и лучшую удалёнку во всём мире под вас.',
       'benefits.b1h': 'Работает 24/7',
       'benefits.b1p': 'Агент не спит, не уходит в отпуск и не отвлекается. Пока вы отдыхаете — он ищет, адаптирует и отправляет заявки.',
       'benefits.b2h': 'Только fully remote — без исключений',
@@ -197,17 +204,21 @@
       'intg.eyebrow': 'Интеграции',
       'intg.h2': 'Агент работает там,<br>где работаете <em>вы</em>',
       'intg.lead':
-        'Подключите почту и Telegram — агент читает ответы рекрутёров, уведомляет о новых офферах и действует от вашего имени.',
+        'Подключите Gmail и отдельный браузерный профиль — агент читает почту (включая письма с подтверждениями и ссылками), подаёт заявки на сайтах работодателей, как человек: открывает страницу, проходит шаги формы и следит за ответами рекрутёров.',
       'intg.email.h': 'Email-интеграция',
       'intg.email.p':
-        'Агент читает входящие письма от рекрутёров, анализирует офферы, отвечает на вопросы и согласовывает время интервью — от вашего имени.',
-      'intg.tg.h': 'Telegram-интеграция',
-      'intg.tg.p':
-        'Агент подаёт заявки через Telegram-боты компаний, ведёт переписку с рекрутёрами в мессенджере и отвечает на вопросы — от вашего имени, пока вы занимаетесь жизнью.',
+        'Агент использует почту для писем с подтверждениями и ссылок на верификацию — чтобы заявка не зависла, когда сайт просит подтвердить действие по email.',
+      'intg.browser.chip': 'Браузер',
+      'intg.browser.h': 'Браузер агента на компьютере агента для подачи заявок',
+      'intg.browser.p':
+        'Агент открывает карьерные порталы компаний в управляемом браузере и подаёт заявку так же, как сделали бы вы: проходит шаги, загружает резюме, отправляет форму — при необходимости подтверждает шаги в потоке отклика.',
       'intg.sec.title': 'Безопасность',
-      'intg.sec.li1': 'Доступ только к переписке с рекрутёрами — личные чаты закрыты',
-      'intg.sec.li2': 'Никаких паролей — подключение через официальный Telegram Bot API',
-      'intg.sec.li3': 'Отозвать доступ можно в один клик в любой момент',
+      'intg.sec.li1':
+        'Используется OAuth 2 — Gmail подключается через официальную авторизацию OAuth 2 Google; пароли на наших серверах не хранятся.',
+      'intg.sec.li2':
+        'Ограниченный доступ — только цепочки с рекрутёрами и сценарии отклика; остальная почта недоступна',
+      'intg.sec.li3':
+        'Автоматизация браузера только на сайтах, которые вы разрешили; отозвать доступ — в один клик в любой момент',
       'test.eyebrow': 'Истории',
       'test.h2': 'Они уже работают<br><em>удалённо</em>',
       'test.q1':
@@ -239,15 +250,15 @@
   });
   window.__screenlyFeedDetailEn = FEED_DETAIL_EN;
 
-  window.__screenlyLang = 'ru';
+  window.__screenlyLang = 'en';
 
   function getPack(lang) {
-    return window.SCREENLY_I18N[lang] || window.SCREENLY_I18N.ru;
+    return window.SCREENLY_I18N[lang] || window.SCREENLY_I18N.en || window.SCREENLY_I18N.ru;
   }
 
   function applyStaticStrings(lang) {
     var pack = getPack(lang);
-    document.documentElement.lang = HTML_LANG[lang] || 'ru';
+    document.documentElement.lang = HTML_LANG[lang] || 'en';
     document.documentElement.dir = RTL_LANGS.indexOf(lang) !== -1 ? 'rtl' : 'ltr';
 
     var y = new Date().getFullYear();
@@ -294,7 +305,7 @@
     var timer2;
 
     function currentLang() {
-      return window.__screenlyLang || 'ru';
+      return window.__screenlyLang || 'en';
     }
 
     function pack() {
@@ -303,7 +314,7 @@
 
     function timeAgo(secsAgo) {
       var fn = FEED_TIME[currentLang()];
-      return fn ? fn(secsAgo) : feedTimeRu(secsAgo);
+      return fn ? fn(secsAgo) : (FEED_TIME.en ? FEED_TIME.en(secsAgo) : feedTimeRu(secsAgo));
     }
 
     function render() {
@@ -397,18 +408,18 @@
   }
 
   function applyLanguage(lang) {
-    if (!window.SCREENLY_I18N[lang]) lang = 'ru';
+    if (!window.SCREENLY_I18N[lang]) lang = 'en';
     applyStaticStrings(lang);
     if (window.__screenlyFeedReset) window.__screenlyFeedReset();
   }
 
   document.addEventListener('DOMContentLoaded', function () {
     var sel = document.getElementById('lang-select');
-    var saved = 'ru';
+    var saved = 'en';
     try {
-      saved = localStorage.getItem(STORAGE_KEY) || 'ru';
+      saved = localStorage.getItem(STORAGE_KEY) || 'en';
     } catch (e) {}
-    if (!window.SCREENLY_I18N[saved]) saved = 'ru';
+    if (!window.SCREENLY_I18N[saved]) saved = 'en';
     applyStaticStrings(saved);
     initAgentFeed();
     if (sel) {
