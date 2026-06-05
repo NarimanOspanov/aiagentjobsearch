@@ -1,430 +1,800 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="doc-title">Screenly — AI agent for global remote job search</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<title>Screenly</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+<script>
+const T = {
+  en: {
+    "title": "Screenly — We Apply. You Get Hired. Guaranteed.",
+    "nav.how": "How it works", "nav.pricing": "Pricing", "nav.faq": "FAQ", "nav.cta": "Apply free today",
+
+    "hero.badge": "Real human assistant. Not a bot.",
+    "hero.h1": "Guaranteed placement <em>into a remote job that pays in hard currency.</em>",
+    "hero.sub": "A personal career assistant applies to the best-matched global remote roles within hours of posting — tailored resume, human cover letter, within the first 50 applicants. You show up to interviews. We handle everything else.",
+    "hero.b1": "<strong>A real personal assistant</strong> — a human, not a bot.",
+    "hero.b2": "Finds 100% remote roles matched to you — worldwide, ~1,000 a month on average.",
+    "hero.b3": "Tailored resume and a human cover letter on every application.",
+    "hero.b4": "Interview prep tailored to every role.",
+    "hero.cta1": "First 10 applications free — try it out", "hero.cta2": "See how it works",
+    "hero.social": "professionals went remote this year",
+
+    "card.name": "Alex M. — Your Career Assistant", "card.role": "Applying to remote roles on your behalf",
+    "card.status": "Applying now",
+    "card.job1": "Marketing Manager", "card.co1": "HubSpot · Remote 🌍",
+    "card.job2": "Customer Success Lead", "card.co2": "Zendesk · Remote 🌍",
+    "card.job3": "Operations Manager", "card.co3": "Deel · Remote 🌍",
+    "card.badge.custom": "Tailored resume", "card.badge.sent": "Applied (top 34)", "card.badge.review": "Interview booked",
+    "card.summary": "<strong>847 remote roles</strong> applied this month · avg. position #31",
+    "card.chip1": "Offer signed 🎉", "card.chip2": "☕ Working from Almaty",
+
+    "trust.1": "First 50 applicants, guaranteed", "trust.2": "500–1,000 roles applied / month",
+    "trust.3": "Human cover letter every time", "trust.4": "All industries, remote only", "trust.5": "Money back if no interviews",
+
+    "why.label": "Three things that get you hired",
+    "why.h2": "Speed. Quality. Volume.<br><em>Most services give you one.</em>",
+    "why.sub": "Remote hiring is a numbers game with a quality filter. You need enough applications to get lucky, sent fast enough to beat the crowd, each one good enough to survive a real recruiter. We deliver all three.",
+    "why.1.title": "Speed: first 50 applicants",
+    "why.1.body": "Remote job postings on top boards receive 200–400 applications. 80% of interviews come from the first 50 applicants. We apply within hours of a role going live — not days.",
+    "why.2.title": "Quality: tailored every time",
+    "why.2.body": "Every application gets a resume adapted to that specific role’s keywords and requirements — so it clears the ATS filters and lands in the ~5% of applications that actually reach a human recruiter. Plus a cover letter written by a human that doesn’t sound like ChatGPT. Recruiters notice the difference.",
+    "why.3.title": "Volume: 500–1,000 roles a month",
+    "why.3.body": "We search 40+ global remote boards daily and apply to every quality-matched role. The average job seeker applies to 20–30 roles a month. Our clients cover 20–50× more ground.",
+    "why.4.title": "Personal assistant, not a tool",
+    "why.4.body": "You get a dedicated career assistant who knows your background, tracks your applications, preps you for interviews, and shares the tactics that actually work at remote-first companies.",
+
+    "how.label": "How the process works",
+    "how.h2": "Consultation → applications → <em>interviews</em>",
+    "how.sub": "A short intro call, a dedicated assistant, and daily applications — you step in when an interview is booked.",
+    "how.step1.title": "Consultation (15 min)",
+    "how.step1.body": "We start with a short, friendly chat — we get to know your background and career goals and tell you honestly whether we can help. We’re selective only because we back results with a guarantee. 15 minutes, no commitment.",
+    "how.step1.cta": "Submit application",
+    "how.step2.title": "Profile & strategy session",
+    "how.step2.body": "Your personal assistant learns your preferences, finds matching roles, tailors your resume to each one, and applies on your behalf. You get detailed reports on every application.",
+    "how.step3.title": "We prep you for the interview",
+    "how.step3.body": "We’re focused on the outcome: we go through the top questions for your role, share tactics that boost your chances in both the general and technical interviews, and a strategy for negotiating salary.",
+
+    "diff.label": "Why not just use AI",
+    "diff.h2": "AI applies fast.<br><em>Fast rejections aren’t a strategy.</em>",
+    "diff.sub": "We’ve spoken to hiring managers at remote-first companies. They all say the same thing: AI-generated applications are the easiest to filter. Volume without quality doesn’t work.",
+    "diff.human.title": "Screenly assistant",
+    "diff.ai.title": "AI auto-applier",
+    "diff.h1.t": "First 50 applicants every time", "diff.h1.d": "We monitor job boards in real time and apply within hours of posting. You’re in the first wave, not the pile that arrives three days later.",
+    "diff.h2.t": "Human cover letters", "diff.h2.d": "Each letter is written for that specific company’s culture and role. It references their product, their team structure, and why your background fits — not a template with your name swapped in.",
+    "diff.h3.t": "500–1,000 quality matches", "diff.h3.d": "We apply broadly, but never blindly. Your assistant filters for genuine fit — role level, timezone, skills, and company culture — before a single application goes out.",
+    "diff.h4.t": "Interview prep included", "diff.h4.d": "Your assistant briefs you before every interview: the company’s remote culture, likely questions, how to frame your background, and salary negotiation tactics for this specific role.",
+    "diff.a1.t": "Applies in days, not hours", "diff.a1.d": "By the time an AI tool queues your application, the first-50 window has closed. You’re competing with 350 other candidates, not 49.",
+    "diff.a2.t": "Same resume for every role", "diff.a2.d": "No keyword adaptation, no role-specific framing. ATS systems score you low; human reviewers pass.",
+    "diff.a3.t": "AI cover letters get deleted", "diff.a3.d": "Hiring managers at top remote companies have seen thousands. They know the patterns. A flagged application damages your credibility at that company for months.",
+    "diff.a4.t": "No accountability", "diff.a4.d": "If you don’t get interviews, nothing happens. No refund, no feedback, no improvement. Just more of the same.",
+
+    "stats.1": "of clients land a remote interview within 30 days",
+    "stats.2": "average remote applications per client per month",
+    "stats.3": "average salary increase vs previous local role",
+
+    "testi.label": "Real clients. Real results.",
+    "testi.h2": "They applied through us.<br><em>Now they work from anywhere.</em>",
+    "testi.sub": "These are not testimonials from our marketing team. These are messages from clients whose career assistants got them into the first 50 applicants.",
+    "testi.1.text": "“I’d been applying myself for 8 months with zero traction. My assistant applied to 600 roles in the first month. I had 11 interviews and accepted a fully remote offer at 2.4× my previous salary.”",
+    "testi.1.name": "Arman Bekov", "testi.1.role": "Operations Manager → Deel, remote (Almaty)",
+    "testi.2.text": "“The cover letters were what made the difference. Three separate hiring managers mentioned them in the first interview. My assistant knew how to write for global companies in a way I’d never managed on my own.”",
+    "testi.2.name": "Priya Nair", "testi.2.role": "Marketing Lead → HubSpot, remote (Mumbai)",
+    "testi.3.text": "“I was skeptical about the volume approach but the quality filter is real. Every role my assistant applied to was a genuine match. I didn’t waste a single interview on the wrong company.”",
+    "testi.3.name": "Lena Hoffmann", "testi.3.role": "Customer Success → Zendesk, remote (Berlin)",
+
+    "pricing.label": "Pricing",
+    "pricing.h2": "We’re focused on the <em>result.</em>",
+    "pricing.sub": "$50/month while we apply. The main fee — 50% of your first month’s salary — is due only after you receive an offer. A bank installment of up to 12 months is available, so it never lands all at once.",
+    "pricing.note": "Money-back guarantee: no 3 interview invitations within 90 days and your monthly is fully refunded. The success fee is one-time, taken from your first salary, and can be split over 12 months.",
+    "plan.mo": "/mo", "plan.btn": "Apply for a spot",
+    "plan.1.badge": "Pay for results", "plan.1.name": "Result-based",
+    "plan.1.fee": "+ 50% of your first month’s salary — only after you get an offer",
+    "plan.1.inst": "Bank installment available — up to 12 months",
+    "plan.1.desc": "We’re paid for the result. The big part comes only when you win the offer.",
+    "plan.1.f1": "Dedicated personal career assistant",
+    "plan.1.f2": "Up to 1,000 remote applications / mo",
+    "plan.1.f3": "Tailored resume + human cover letter per role",
+    "plan.1.f4": "First-50 applicant targeting",
+    "plan.1.f5": "Interview prep + salary negotiation",
+    "plan.1.f6": "Money-back interview guarantee",
+    "plan.2.badge": "Most popular", "plan.2.name": "Accelerate",
+    "plan.2.fee": "+ 20% of first month’s salary, only when hired",
+    "plan.2.desc": "Lower success fee, more firepower",
+    "plan.2.f1": "Up to 700 remote applications / mo",
+    "plan.2.f2": "Dedicated career assistant",
+    "plan.2.f3": "Remote-rebuilt resume + LinkedIn",
+    "plan.2.f4": "Priority applications (sub-2h)",
+    "plan.2.f5": "Interview prep + salary negotiation",
+    "plan.2.f6": "Reduced 20% success fee",
+    "plan.3.badge": "No success fee", "plan.3.name": "Flat",
+    "plan.3.fee": "No success fee — keep 100% of your salary",
+    "plan.3.desc": "Pay monthly, hard cap on total cost",
+    "plan.3.f1": "Up to 1,000 remote applications / mo",
+    "plan.3.f2": "Senior career assistant",
+    "plan.3.f3": "Everything in Accelerate",
+    "plan.3.f4": "Offer & contract review",
+    "plan.3.f5": "Visa & contractor setup guidance",
+    "plan.3.f6": "Best if you expect a high salary",
+
+    "faq.label": "Straight answers",
+    "faq.h2": "The questions everyone<br><em>actually asks us</em>",
+    "faq.sub": "Not here? Message us. A human replies the same day.",
+    "faq.1.q": "Who is Screenly for?",
+    "faq.1.a": "Professionals across industries — marketing, operations, sales, HR, finance, design, product, and more. We take clients we believe we can place and back that with a guarantee.",
+    "faq.2.q": "What’s the guarantee — is there a catch?",
+    "faq.2.a": "No catch. We’re a team of engineers and recruiters, and we’re focused on the result: the main fee is due only after you receive an offer. Money-back guarantee: if you don’t get at least 3 interview invitations within 90 days, we refund all your monthly payments in full.",
+    "faq.3.q": "How does the first-50 targeting work?",
+    "faq.3.a": "We monitor 40+ remote job boards in real time. The moment a matching role is posted, your assistant prepares a tailored application and submits it — typically within 1–4 hours of the posting going live. The majority of remote interviews go to candidates who apply in this window.",
+    "faq.6.q": "Where do you apply?",
+    "faq.6.a": "Everywhere roles are posted: company career sites, LinkedIn, Indeed, HeadHunter, and other job boards — anywhere a matching remote role goes live.",
+    "faq.4.q": "Can I control where I apply and where I don’t?",
+    "faq.4.a": "Yes. For example, to avoid applying to your current or previous employer, there’s a stop-list. You can also set a wishlist of target companies you’d like to reach first.",
+    "faq.5.q": "What happens after I get an interview?",
+    "faq.5.a": "Your assistant briefs you on the company: their remote culture, the role’s context, likely interview structure, and salary benchmarks for the position. We also share negotiation tactics specific to remote-first companies. You don’t walk in cold.",
+
+    "cta.label": "Apply for a spot",
+    "cta.h2": "We don’t take everyone.<br><em>But for everyone we take, we guarantee the result.</em>",
+    "cta.sub": "Pass our screening and we guarantee interviews — or your money back. Your assistant starts the same day. First 10 applications are free to try.",
+    "cta.btn1": "Apply for screening", "cta.btn2": "Book a 20-min call",
+    "cta.fine": "Remote roles worldwide · All industries",
+
+    "footer.brand": "Real career assistants who apply to remote jobs on your behalf. Speed, quality, volume — all three, every day.",
+    "footer.col1.title": "Product", "footer.col1.1": "How it works", "footer.col1.2": "Pricing", "footer.col1.3": "For teams", "footer.col1.4": "Success stories",
+    "footer.col2.title": "Resources", "footer.col2.1": "Remote resume guide", "footer.col2.2": "Top remote job boards 2026", "footer.col2.3": "Remote interview playbook", "footer.col2.4": "Global salary calculator",
+    "footer.col3.title": "Company", "footer.col3.1": "About us", "footer.col3.2": "Blog", "footer.col3.3": "Privacy policy", "footer.col3.4": "Terms of service",
+    "footer.copy": "© 2026 Screenly. All rights reserved.", "footer.made": "Built remotely, for remote workers 🌍"
+  },
+
+  ru: {
+    "title": "Screenly — Откликаемся на удалённые вакансии за вас. Интервью — гарантируем.",
+    "nav.how": "Как это работает", "nav.pricing": "Цены", "nav.faq": "Вопросы", "nav.cta": "Оставить заявку",
+
+    "hero.badge": "Делегируйте рутину поиска работы",
+    "hero.h1": "Гарантированное трудоустройство <em>на валютную удалёнку</em>",
+    "hero.sub": "Живой личный карьерный ассистент подаёт отклики в первые часы после публикации вакансии — с адаптированным CV и сопроводительным письмом. Вы приходите на интервью. Мы берём всю рутину.",
+    "hero.b1": "<strong>Живой личный ассистент</strong> — настоящий человек, а не бот.",
+    "hero.b2": "Находит 100% удалённые вакансии под вас — со всего мира, в среднем около 1000 в месяц.",
+    "hero.b3": "Адаптированное CV и живое сопроводительное письмо на каждую вакансию.",
+    "hero.b4": "Подготовка к интервью под каждую вакансию.",
+    "hero.cta1": "Первые 10 откликов бесплатно, для ознакомления", "hero.cta2": "Посмотреть как это работает",
+    "hero.social": "специалистов вышли на удалёнку в этом году",
+
+    "card.name": "Алексей М. — ваш карьерный ассистент", "card.role": "Подаёт отклики на удалённые вакансии вместо вас",
+    "card.status": "Сейчас подаёт",
+    "card.job1": "Marketing Manager", "card.co1": "HubSpot · Удалённо 🌍",
+    "card.job2": "Customer Success Lead", "card.co2": "Zendesk · Удалённо 🌍",
+    "card.job3": "Operations Manager", "card.co3": "Deel · Удалённо 🌍",
+    "card.badge.custom": "Адаптированное CV", "card.badge.sent": "Подано (позиция #34)", "card.badge.review": "Интервью назначено",
+    "card.summary": "<strong>847 вакансий</strong> отправлено за месяц · ср. позиция #31",
+    "card.chip1": "Оффер подписан 🎉", "card.chip2": "☕ Работает из Алматы",
+
+    "trust.1": "В первых 50 откликах, гарантия", "trust.2": "500–1000 вакансий в месяц",
+    "trust.3": "Живое письмо на каждую вакансию", "trust.4": "Любые сферы, только удалёнка", "trust.5": "Возврат, если нет интервью",
+
+    "why.label": "Три вещи, важные при отклике",
+    "why.h2": "Скорость. Качество. Количество.",
+    "why.sub": "",
+    "why.1.title": "Скорость: вы будете среди первых 50 откликах",
+    "why.1.body": "На топовые удалённые вакансии приходит 200–400 откликов. 80% интервью получают первые 50 кандидатов. Мы подаём отклик в течение нескольких часов после публикации — не через дни.",
+    "why.2.title": "Качество: резюме и сопроводительное письмо адаптируются под каждую вакансию",
+    "why.2.body": "Каждое резюме адаптируется под конкретную вакансию: ключевые слова, требования роли, уровень. Так оно проходит ATS-фильтры и попадает в те ~5% откликов, которые вообще доходят до живого рекрутера. Плюс живое сопроводительное письмо, которое не путают с ChatGPT. Рекрутеры видят разницу.",
+    "why.3.title": "Количество: охват, которого не добиться вручную",
+    "why.3.body": "На удалённом рынке выигрывает тот, кто охватывает больше. Среднестатистический кандидат подаёт 20–30 откликов в месяц. Наши клиенты — до 1000. Только на релевантные вакансии со всего мира.",
+    "why.4.title": "",
+    "why.4.body": "",
+
+    "how.label": "Как устроен процесс",
+    "how.h2": "Консультация → отклики → <em>интервью</em>",
+    "how.sub": "Короткое знакомство, личный ассистент и ежедневные отклики — вы подключаетесь, когда назначено интервью.",
+    "how.step1.title": "Консультация (15 минут)",
+    "how.step1.body": "Начнём с короткого знакомства: обсудим ваш опыт и цели и честно скажем, сможем ли быть полезны. Берём не всех — просто потому, что отвечаем за результат гарантией. 15 минут, без обязательств.",
+    "how.step1.cta": "Оставить заявку",
+    "how.step2.title": "Назначаем личного ассистента и начинаем отклики",
+    "how.step2.body": "Личный ассистент узнаёт ваши предпочтения, находит подходящие вакансии, адаптирует резюме под каждую из них и откликается за вас. Вы получаете детальные отчёты по всем откликам.",
+    "how.step3.title": "Готовим к собеседованию",
+    "how.step3.body": "Мы нацелены на результат: разбираем топ-вопросы под вашу позицию, делимся лайфхаками, которые повышают шансы пройти общее и техническое интервью, и стратегией переговоров о зарплате.",
+
+    "diff.label": "А почему не просто бот?",
+    "diff.h2": "Бот тоже подаёт.<br><em>Только его удаляют не читая.</em>",
+    "diff.sub": "Мы спрашивали рекрутеров в ремоут-компаниях. Все говорят одно: отклики, написанные ИИ, видно с первого абзаца. Их удаляют, не дочитывая.",
+    "diff.human.title": "Ассистент Screenly",
+    "diff.ai.title": "ИИ-автозаполнение",
+    "diff.h1.t": "Первые 50 откликов каждый раз", "diff.h1.d": "Мы отслеживаем борды в режиме реального времени и подаём в первые часы после публикации. Вы в первой волне, не в хвосте.",
+    "diff.h2.t": "Живые сопроводительные письма", "diff.h2.d": "Каждое письмо пишется под конкретную компанию — её продукт, команду, стиль коммуникации. Рекрутеры видят, кто старался, а кто вставил шаблон.",
+    "diff.h3.t": "500–1000 качественных откликов", "diff.h3.d": "Много, но не бездумно. Перед каждым откликом ассистент проверяет навыки, уровень, тайм-зону и культуру компании.",
+    "diff.h4.t": "Подготовка к интервью входит в сервис", "diff.h4.d": "Перед каждым звонком ассистент брифует вас: продукт, культура компании, процесс интервью, тактика переговоров по зарплате.",
+    "diff.a1.t": "Подаёт через дни, не часы", "diff.a1.d": "К тому времени, как бот сформирует заявку, первые 50 мест уже заняты. Вы в хвосте с 350 другими.",
+    "diff.a2.t": "Одно CV для всех", "diff.a2.d": "Никакой адаптации под вакансию. ATS ставит низкий балл, человек-рекрутер пропускает.",
+    "diff.a3.t": "Письма от ИИ удаляются", "diff.a3.d": "Рекрутеры в крупных ремоут-компаниях видели тысячи таких писем. Шаблон узнают с первого предложения. Такой отклик портит вашу репутацию в этой компании надолго.",
+    "diff.a4.t": "Нет ответственности", "diff.a4.d": "Если интервью не было — ничего. Ни возврата, ни анализа, ни изменений стратегии. Просто ещё больше того же.",
+
+    "stats.1": "клиентов получают интервью за первые 30 дней",
+    "stats.2": "среднее количество откликов в месяц на клиента",
+    "stats.3": "средний рост зарплаты после перехода на удалёнку",
+
+    "testi.label": "Реальные клиенты. Реальные результаты.",
+    "testi.h2": "Подавали через нас.<br><em>Теперь работают на глобальной удалёнке.</em>",
+    "testi.sub": "Это не цитаты из маркетинговых материалов. Каждый из них получил оффер, потому что ассистент оказался в числе первых.",
+    "testi.1.text": "«Сам отправлял CV 8 месяцев — ничего. Ассистент подал 600 вакансий за первый месяц. 11 интервью и оффер с зарплатой в 2.4 раза выше предыдущей.»",
+    "testi.1.name": "Арман Беков", "testi.1.role": "Operations Manager → Deel, удалённо (Алматы)",
+    "testi.2.text": "«Сопроводительные письма — это разница. Три рекрутера упомянули их уже на первом интервью. Ассистент знал, как писать для глобальных компаний — я так не умела.»",
+    "testi.2.name": "Прия Найр", "testi.2.role": "Marketing Lead → HubSpot, удалённо (Мумбай)",
+    "testi.3.text": "«Боялся, что при таком объёме посыпятся все подряд. Нет — фильтр реальный. Каждая вакансия, на которую подал ассистент, действительно подходила. Ни одного потерянного интервью.»",
+    "testi.3.name": "Лена Хофман", "testi.3.role": "Customer Success → Zendesk, удалённо (Берлин)",
+
+    "pricing.label": "Цены",
+    "pricing.h2": "Мы ориентируемся на <em>результат.</em>",
+    "pricing.sub": "$50 в месяц, пока мы откликаемся. Основная оплата — 50% от первой зарплаты — только после того, как вы получили оффер. Доступна рассрочка через банк до 12 месяцев, чтобы платёж не лёг разом.",
+    "pricing.note": "Гарантия возврата: если за 90 дней не будет 3 приглашений на интервью, ежемесячный платёж вернём полностью. Комиссия за результат — разовая, берётся с первой зарплаты, и её можно разбить на 12 месяцев.",
+    "plan.mo": "/мес", "plan.btn": "Оставить заявку",
+    "plan.1.badge": "Оплата за результат", "plan.1.name": "За результат",
+    "plan.1.fee": "+ 50% от первой зарплаты — только после получения оффера",
+    "plan.1.inst": "Рассрочка через банк — до 12 месяцев",
+    "plan.1.desc": "Мы зарабатываем на результате. Основное — только когда у вас оффер.",
+    "plan.1.f1": "Личный карьерный ассистент",
+    "plan.1.f2": "До 1000 откликов в месяц",
+    "plan.1.f3": "CV под каждую вакансию + живое письмо",
+    "plan.1.f4": "В первых 50 откликах",
+    "plan.1.f5": "Подготовка к интервью + переговоры о ЗП",
+    "plan.1.f6": "Гарантия интервью или возврат денег",
+    "plan.2.badge": "Популярный", "plan.2.name": "Ускорение",
+    "plan.2.fee": "+ 20% от первой зарплаты, только при найме",
+    "plan.2.desc": "Меньше комиссия, больше мощности",
+    "plan.2.f1": "До 700 откликов в месяц",
+    "plan.2.f2": "Личный карьерный ассистент",
+    "plan.2.f3": "CV + LinkedIn переписаны под удалёнку",
+    "plan.2.f4": "Приоритетные отклики (менее 2 часов)",
+    "plan.2.f5": "Подготовка к интервью + переговоры о зарплате",
+    "plan.2.f6": "Сниженная комиссия 20%",
+    "plan.3.badge": "Без комиссии", "plan.3.name": "Фикс",
+    "plan.3.fee": "Без комиссии за результат — зарплата вся ваша",
+    "plan.3.desc": "Платите помесячно, с потолком по затратам",
+    "plan.3.f1": "До 1000 откликов в месяц",
+    "plan.3.f2": "Старший карьерный ассистент",
+    "plan.3.f3": "Всё из «Ускорения»",
+    "plan.3.f4": "Разбор оффера и контракта",
+    "plan.3.f5": "Помощь с юридическим оформлением",
+    "plan.3.f6": "Лучше всего при высокой ожидаемой зарплате",
+
+    "faq.label": "Честные ответы",
+    "faq.h2": "То, что спрашивают<br><em>чаще всего</em>",
+    "faq.sub": "Не нашли свой вопрос — напишите нам. Отвечает живой человек, в тот же день.",
+    "faq.1.q": "Кому подходит сервис?",
+    "faq.1.a": "Специалистам из разных сфер — маркетинг, операции, продажи, HR, финансы, дизайн, продукт и другие. Мы берём тех, кому реально можем помочь, и отвечаем за это гарантией.",
+    "faq.2.q": "В чём гарантия и есть ли подвох?",
+    "faq.2.a": "Подвохов нет. Мы команда инженеров и рекрутеров и ориентированы на результат: основная оплата — только после того, как вы получили оффер. Гарантия возврата: если за 90 дней не будет минимум 3 приглашений на интервью, вернём все ежемесячные платежи полностью.",
+    "faq.3.q": "Что значит «первые 50 откликов»?",
+    "faq.3.a": "Мы отслеживаем 40+ ремоут-платформ в режиме реального времени. Как только появляется подходящая вакансия, ассистент сразу готовит и отправляет отклик — обычно в течение 1–4 часов. 80% интервью получают первые 50 кандидатов.",
+    "faq.6.q": "Где вы откликаетесь?",
+    "faq.6.a": "Везде, где публикуются вакансии: на сайтах компаний, LinkedIn, Indeed, HeadHunter и других площадках — всюду, где появляется подходящая удалённая вакансия.",
+    "faq.4.q": "Можно ли указать, куда откликаться, а куда нет?",
+    "faq.4.a": "Да. Например, чтобы не откликаться в вашу текущую или прошлую компанию, есть стоп-список. А ещё — список желаемых компаний, куда вы хотите попасть в первую очередь.",
+    "faq.5.q": "Что происходит после интервью?",
+    "faq.5.a": "Ассистент брифует вас перед каждым звонком: продукт компании, культура, структура интервью, ориентиры по зарплате. Вы не заходите на интервью холодным.",
+
+    "cta.label": "Оставить заявку",
+    "cta.h2": "Мы берём не всех.<br><em>Но за всех, кого берём, гарантируем результат.</em>",
+    "cta.sub": "Пройдите скрининг — и мы гарантируем интервью или возвращаем деньги. Ассистент начинает в день регистрации. Первые 10 откликов — бесплатно, для ознакомления.",
+    "cta.btn1": "Оставить заявку", "cta.btn2": "Записаться на 20-минутный звонок",
+    "cta.fine": "Удалёнка по всему миру · Любые сферы",
+
+    "footer.brand": "Личные карьерные ассистенты, которые подают на удалённые вакансии вместо вас. Скорость, качество, объём — каждый день.",
+    "footer.col1.title": "Продукт", "footer.col1.1": "Как это работает", "footer.col1.2": "Цены", "footer.col1.3": "Для команд", "footer.col1.4": "Истории успеха",
+    "footer.col2.title": "Материалы", "footer.col2.1": "Как писать CV для ремоута", "footer.col2.2": "Топ ремоут-платформ 2026", "footer.col2.3": "Как пройти интервью на английском", "footer.col2.4": "Калькулятор зарплат",
+    "footer.col3.title": "Компания", "footer.col3.1": "О нас", "footer.col3.2": "Блог", "footer.col3.3": "Политика конфиденциальности", "footer.col3.4": "Пользовательское соглашение",
+    "footer.copy": "© 2026 Screenly. Все права защищены.", "footer.made": "Написано, отправлено и собрано удалённо 🌍"
+  }
+};
+
+function setLang(lang) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang')===lang); });
+  var t = T[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(t[k]!==undefined) el.textContent=t[k]; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){ var k=el.getAttribute('data-i18n-html'); if(t[k]!==undefined) el.innerHTML=t[k]; });
+  if(t['title']) document.title=t['title'];
+}
+function toggleFaq(btn){
+  var a=btn.nextElementSibling, open=a.classList.contains('open');
+  document.querySelectorAll('.fa.open').forEach(function(x){x.classList.remove('open');});
+  document.querySelectorAll('.fq.open').forEach(function(x){x.classList.remove('open');});
+  if(!open){a.classList.add('open');btn.classList.add('open');}
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --p:#1A56DB;--pl:#E8F0FE;--pd:#0D3FA6;--s:#00897B;--sl:#E0F2F1;
+  --sur:#fff;--surv:#F8F9FF;--surc:#F1F4FD;
+  --on:#1C1B1F;--onv:#49454F;--out:#79747E;--outv:#E2E1EC;--bg:#FDFCFF;
+  --e1:0 1px 2px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.10);
+  --e2:0 1px 5px rgba(0,0,0,.07),0 2px 8px rgba(0,0,0,.10);
+  --e3:0 4px 8px rgba(0,0,0,.08),0 2px 12px rgba(0,0,0,.08);
+  --fd:'DM Serif Display',serif;--fb:'DM Sans',sans-serif;
+  --r4:4px;--r8:8px;--r12:12px;--r20:20px;--r28:28px;--rf:9999px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--bg);color:var(--on);line-height:1.6;overflow-x:hidden;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(253,252,255,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--outv);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-size:21px;color:var(--p);text-decoration:none;}
+.nav-globe{font-size:18px;color:var(--s);}
+.nav-links{display:flex;gap:4px;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--onv);font-size:14px;font-weight:500;padding:8px 14px;border-radius:var(--rf);transition:background .18s,color .18s;}
+.nav-links a:hover{background:var(--surc);color:var(--on);}
+.nav-cta{background:var(--p)!important;color:#fff!important;padding:10px 22px!important;border-radius:var(--rf)!important;font-weight:600!important;font-size:14px!important;transition:box-shadow .2s,transform .15s!important;}
+.nav-cta:hover{box-shadow:var(--e3);transform:translateY(-1px);}
+.lang-sw{display:flex;align-items:center;gap:2px;background:var(--surc);border-radius:var(--rf);padding:3px;border:1px solid var(--outv);margin-right:8px;}
+.lang-btn{border:none;background:transparent;cursor:pointer;font-family:var(--fb);font-size:13px;font-weight:600;padding:5px 12px;border-radius:var(--rf);color:var(--onv);transition:background .15s,color .15s;}
+.lang-btn.active{background:var(--sur);color:var(--p);box-shadow:var(--e1);}
+
+/* HERO */
+.hero{max-width:1120px;margin:0 auto;padding:96px 32px 80px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--pl);color:var(--pd);border-radius:var(--rf);padding:6px 16px 6px 8px;font-size:13px;font-weight:600;margin-bottom:24px;}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--s);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(1.3);}}
+h1{font-family:var(--fd);font-size:clamp(36px,4.6vw,54px);line-height:1.12;letter-spacing:-.5px;margin-bottom:24px;}
+h1 em{font-style:italic;color:var(--p);}
+.hero-sub{font-size:17px;font-weight:300;color:var(--onv);line-height:1.7;margin-bottom:40px;max-width:460px;}
+.hero-points{list-style:none;margin:0 0 40px;max-width:480px;display:flex;flex-direction:column;gap:13px;}
+.hero-points li{display:flex;align-items:flex-start;gap:11px;font-size:16px;font-weight:400;color:var(--onv);line-height:1.5;}
+.hero-points .material-icons-round{font-size:21px;color:var(--s);flex-shrink:0;margin-top:1px;}
+.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
+.btn-p{background:var(--p);color:#fff;border:none;cursor:pointer;font-family:var(--fb);font-size:15px;font-weight:600;padding:14px 28px;border-radius:var(--rf);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:box-shadow .2s,transform .15s;box-shadow:var(--e2);}
+.btn-p:hover{box-shadow:var(--e3);transform:translateY(-2px);}
+.btn-s{background:transparent;color:var(--p);border:1.5px solid var(--p);cursor:pointer;font-family:var(--fb);font-size:15px;font-weight:600;padding:13px 26px;border-radius:var(--rf);display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:background .18s;}
+.btn-s:hover{background:var(--pl);}
+.hero-proof{display:flex;align-items:center;gap:12px;margin-top:32px;}
+.av-stack{display:flex;}
+.av{width:34px;height:34px;border-radius:50%;border:2.5px solid #fff;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;overflow:hidden;}
+.av-stack .av:first-child{margin-left:0;}
+.av-txt{font-size:13px;color:var(--onv);}
+.av-txt strong{color:var(--on);}
+
+/* HERO CARD */
+.hero-vis{position:relative;}
+.hcard{background:var(--sur);border:1px solid var(--outv);border-radius:var(--r28);padding:24px;box-shadow:var(--e3);position:relative;overflow:hidden;}
+.hcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--p),var(--s));}
+.ch{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.cav{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1A56DB,#00897B);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:15px;flex-shrink:0;}
+.cht{flex:1;}
+.cht .cn{font-weight:600;font-size:14px;}
+.cht .cr{font-size:12px;color:var(--onv);}
+.cst{display:inline-flex;align-items:center;gap:5px;background:#E8F5E9;color:#2E7D32;border-radius:var(--rf);font-size:11px;font-weight:600;padding:4px 10px;white-space:nowrap;}
+.cst .dot{width:6px;height:6px;border-radius:50%;background:#43A047;}
+.alist{display:flex;flex-direction:column;gap:8px;}
+.aitem{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surc);border-radius:var(--r12);transition:transform .15s;}
+.aitem:hover{transform:translateX(3px);}
+.alogo{width:34px;height:34px;border-radius:var(--r8);background:var(--pl);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.ainf{flex:1;min-width:0;}
+.ainf .jt{font-weight:500;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ainf .co{font-size:11px;color:var(--onv);}
+.abg{font-size:11px;font-weight:600;padding:3px 9px;border-radius:var(--rf);white-space:nowrap;}
+.bc{background:var(--sl);color:#00695C;} .bs{background:#E3F2FD;color:#1565C0;} .br{background:#E8F5E9;color:#2E7D32;}
+.csumm{background:var(--surc);border-radius:var(--r12);padding:12px 14px;margin-top:14px;display:flex;align-items:center;gap:10px;font-size:13px;}
+.fchip{position:absolute;background:#fff;border:1px solid var(--outv);border-radius:var(--rf);padding:7px 14px;font-size:12px;font-weight:500;box-shadow:var(--e2);display:flex;align-items:center;gap:6px;white-space:nowrap;}
+.chip1{bottom:-18px;left:-24px;} .chip2{top:-16px;right:-16px;}
+
+/* TRUST */
+.tbar{background:var(--surc);border-top:1px solid var(--outv);border-bottom:1px solid var(--outv);padding:18px 32px;}
+.tinn{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:36px;flex-wrap:wrap;justify-content:center;}
+.titem{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--onv);}
+.titem .material-icons-round{font-size:17px;color:var(--s);}
+
+/* SECTIONS */
+section{padding:96px 32px;}
+.si{max-width:1120px;margin:0 auto;}
+.slabel{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--s);margin-bottom:12px;}
+h2{font-family:var(--fd);font-size:clamp(28px,3.6vw,42px);line-height:1.15;margin-bottom:16px;}
+h2 em{font-style:italic;color:var(--p);}
+.ssub{font-size:16px;font-weight:300;color:var(--onv);max-width:560px;line-height:1.7;margin-bottom:52px;}
+
+/* WHY REMOTE - 2x2 grid */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+html[lang="ru"] .why-grid{grid-template-columns:repeat(3,1fr);}
+html[lang="ru"] .why-grid .why-card:nth-child(4){display:none;}
+.why-card{background:var(--sur);border:1px solid var(--outv);border-radius:var(--r28);padding:32px 28px;transition:box-shadow .2s,transform .18s;}
+.why-card:hover{box-shadow:var(--e3);transform:translateY(-3px);}
+.why-icon{width:48px;height:48px;border-radius:var(--r12);background:var(--pl);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.why-icon .material-icons-round{color:var(--p);font-size:24px;}
+.why-card h3{font-family:var(--fd);font-size:20px;margin-bottom:10px;}
+.why-card p{font-size:15px;font-weight:300;color:var(--onv);line-height:1.65;}
+
+/* HOW */
+.how-bg{background:var(--surv);}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--outv);border-radius:var(--r28);overflow:hidden;}
+.step{background:var(--sur);padding:36px 30px;}
+.snum{font-family:var(--fd);font-size:52px;font-weight:400;color:var(--outv);line-height:1;margin-bottom:14px;}
+.sico{width:50px;height:50px;border-radius:var(--r12);background:var(--pl);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
+.sico .material-icons-round{color:var(--p);font-size:24px;}
+.step h3{font-family:var(--fd);font-size:21px;margin-bottom:10px;}
+.step p{font-size:15px;font-weight:300;color:var(--onv);line-height:1.65;}
+.step-cta{display:inline-flex;align-items:center;gap:6px;margin-top:18px;padding:11px 22px;font-size:14px;}
+
+/* DIFF */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;}
+.dcol h3{font-size:14px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.dcol h3 .material-icons-round{font-size:19px;}
+.hcol h3 .material-icons-round{color:var(--s);} .acol h3 .material-icons-round{color:#9E9E9E;}
+.di{display:flex;align-items:flex-start;gap:12px;padding:16px 18px;border-radius:var(--r12);margin-bottom:9px;border:1px solid transparent;}
+.hcol .di{background:#F1F8F5;border-color:#C8E6C9;} .acol .di{background:#FAFAFA;border-color:#EEE;}
+.di .material-icons-round{font-size:19px;flex-shrink:0;margin-top:1px;}
+.hcol .di .material-icons-round{color:#388E3C;} .acol .di .material-icons-round{color:#9E9E9E;}
+.dit .tt{font-size:14px;font-weight:600;margin-bottom:3px;} .dit .dd{font-size:13px;color:var(--onv);}
+
+/* STATS */
+.sbg{background:var(--p);padding:0;}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.15);}
+.sc{padding:48px 40px;background:var(--p);text-align:center;}
+.sn{font-family:var(--fd);font-size:58px;font-weight:400;color:#fff;line-height:1;margin-bottom:12px;}
+.sl2{font-size:15px;color:rgba(255,255,255,.75);}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.tc{background:var(--sur);border:1px solid var(--outv);border-radius:var(--r28);padding:28px;transition:box-shadow .2s,transform .2s;}
+.tc:hover{box-shadow:var(--e3);transform:translateY(-4px);}
+.stars{color:#F9A825;font-size:14px;margin-bottom:14px;}
+.tt2{font-size:15px;line-height:1.65;font-style:italic;margin-bottom:22px;}
+.ta{display:flex;align-items:center;gap:11px;}
+.tav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff;flex-shrink:0;}
+.tn{font-weight:600;font-size:14px;} .tr{font-size:12px;color:var(--onv);}
+
+/* PRICING */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
+.psingle{max-width:480px;margin:0 auto;}
+.pinst{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;background:rgba(255,255,255,.16);color:#fff;padding:7px 13px;border-radius:var(--rf);margin-bottom:18px;}
+.pinst .material-icons-round{font-size:16px;}
+.pc{border-radius:var(--r28);padding:30px 26px;border:1.5px solid var(--outv);background:var(--sur);transition:box-shadow .2s;}
+.pc:hover{box-shadow:var(--e3);}
+.pc.feat{border-color:var(--p);background:var(--p);color:#fff;transform:scale(1.02);box-shadow:var(--e3);}
+.pb{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:var(--rf);margin-bottom:18px;display:inline-block;background:var(--pl);color:var(--pd);}
+.feat .pb{background:rgba(255,255,255,.2);color:#fff;}
+.pn{font-family:var(--fd);font-size:23px;margin-bottom:8px;}
+.pp{font-size:40px;font-weight:700;line-height:1;margin-bottom:5px;}
+.pp span{font-size:15px;font-weight:400;opacity:.7;}
+.psf{font-size:13px;font-weight:600;color:var(--s);margin-bottom:14px;line-height:1.35;}
+.feat .psf{color:#fff;opacity:.92;}
+.pd{font-size:14px;opacity:.7;margin-bottom:26px;}
+.pf{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;}
+.pf li{display:flex;align-items:center;gap:9px;font-size:14px;}
+.pf li .material-icons-round{font-size:17px;color:var(--s);flex-shrink:0;}
+.feat .pf li .material-icons-round{color:rgba(255,255,255,.9);}
+.pbtn{display:block;width:100%;padding:13px;border-radius:var(--rf);font-family:var(--fb);font-size:15px;font-weight:600;border:none;cursor:pointer;transition:opacity .18s,transform .15s;background:var(--p);color:#fff;text-align:center;text-decoration:none;box-sizing:border-box;}
+.pbtn:hover{opacity:.9;transform:translateY(-1px);}
+.feat .pbtn{background:#fff;color:var(--p);}
+
+/* FAQ */
+.flist{max-width:740px;}
+.fi{border-bottom:1px solid var(--outv);}
+.fq{width:100%;background:none;border:none;cursor:pointer;text-align:left;display:flex;align-items:center;justify-content:space-between;padding:20px 0;gap:18px;font-family:var(--fb);font-size:16px;font-weight:500;color:var(--on);transition:color .15s;}
+.fq:hover{color:var(--p);}
+.fq .material-icons-round{font-size:20px;color:var(--onv);transition:transform .2s;flex-shrink:0;}
+.fq.open .material-icons-round{transform:rotate(45deg);color:var(--p);}
+.fa{max-height:0;overflow:hidden;font-size:15px;font-weight:300;color:var(--onv);line-height:1.7;transition:max-height .3s,padding .3s;}
+.fa.open{max-height:300px;padding-bottom:20px;}
+
+/* CTA */
+.ctasec{background:var(--surv);text-align:center;}
+.ctacard{max-width:680px;margin:0 auto;background:var(--sur);border:1px solid var(--outv);border-radius:32px;padding:60px 48px;box-shadow:var(--e3);}
+.ctacard h2{margin-bottom:16px;}
+.ctacard p{font-size:16px;font-weight:300;color:var(--onv);margin-bottom:38px;}
+.ctaacts{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:#1C1B1F;color:rgba(255,255,255,.6);padding:64px 32px 32px;}
+.fi2{max-width:1120px;margin:0 auto;}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.fb2 .fn{font-family:var(--fd);font-size:21px;color:#fff;margin-bottom:12px;}
+.fb2 p{font-size:14px;line-height:1.65;}
+.fc h4{color:#fff;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;}
+.fc a{display:block;color:rgba(255,255,255,.55);font-size:14px;text-decoration:none;margin-bottom:9px;transition:color .15s;}
+.fc a:hover{color:#fff;}
+.fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;align-items:center;justify-content:space-between;font-size:13px;flex-wrap:wrap;gap:12px;}
+
+/* ANIMS */
+.fu{opacity:0;transform:translateY(22px);animation:fup .6s ease forwards;}
+@keyframes fup{to{opacity:1;transform:translateY(0);}}
+.d1{animation-delay:.1s;}.d2{animation-delay:.2s;}.d3{animation-delay:.3s;}
+
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr;gap:40px;}
+  .dgrid,.steps,.tgrid,.pgrid,.why-grid{grid-template-columns:1fr;}
+  html[lang="ru"] .why-grid{grid-template-columns:1fr;}
+  .sgrid{grid-template-columns:1fr;}
+  .ft{grid-template-columns:1fr 1fr;}
+  .pc.feat{transform:none;}
+  .faq-lay{grid-template-columns:1fr!important;gap:32px!important;}
+  .hero-vis{display:none;}
+}
+@media(max-width:600px){
+  /* nav */
+  nav{padding:0 16px;height:56px;}
+  .nav-logo{font-size:18px;}
+  .nav-links a:not(.nav-cta):not([data-lang]){display:none;}
+  .nav-cta{padding:8px 16px!important;font-size:13px!important;}
+  .lang-sw{margin-right:6px;}
+  .lang-btn{padding:4px 9px;}
+
+  /* hero */
+  .hero{padding:40px 20px 48px;gap:32px;}
+  h1{font-size:clamp(28px,8vw,40px);line-height:1.15;letter-spacing:-.3px;}
+  .hero-sub{font-size:15px;line-height:1.65;margin-bottom:28px;max-width:100%;}
+  .hero-badge{font-size:12px;margin-bottom:16px;}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:10px;}
+  .btn-p,.btn-s{width:100%;justify-content:center;padding:14px 20px;font-size:15px;}
+  .hero-proof{margin-top:24px;}
+  .av-txt{font-size:12px;}
+  .hero-vis{display:none;}
+  .chip1,.chip2{display:none;}
+
+  /* trust bar */
+  .tbar{padding:16px 20px;}
+  .tinn{gap:12px;justify-content:flex-start;}
+  .titem{font-size:12px;gap:6px;}
+  .titem .material-icons-round{font-size:15px;}
+
+  /* sections */
+  section{padding:52px 20px;}
+  h2{font-size:clamp(24px,7vw,34px);line-height:1.18;}
+  .ssub{font-size:15px;margin-bottom:36px;max-width:100%;}
+  .slabel{font-size:11px;}
+
+  /* why cards */
+  .why-grid{gap:12px;}
+  .why-card{padding:24px 20px;border-radius:var(--r20);}
+  .why-card h3{font-size:17px;}
+  .why-icon{width:40px;height:40px;margin-bottom:12px;}
+
+  /* steps */
+  .steps{border-radius:var(--r20);}
+  .step{padding:28px 20px;}
+  .step h3{font-size:18px;}
+  .snum{font-size:42px;}
+
+  /* diff */
+  .dgrid{gap:16px;}
+  .di{padding:12px 14px;}
+
+  /* stats */
+  .sc{padding:32px 24px;}
+  .sn{font-size:44px;}
+  .sl2{font-size:14px;}
+
+  /* testimonials */
+  .tc{padding:22px 18px;border-radius:var(--r20);}
+
+  /* pricing */
+  .pgrid{gap:12px;}
+  .pc{padding:24px 20px;border-radius:var(--r20);}
+  .pp{font-size:34px;}
+
+  /* faq */
+  .fq{font-size:15px;padding:18px 0;}
+  .fa{font-size:14px;}
+
+  /* cta */
+  .ctacard{padding:36px 20px;border-radius:24px;}
+  .ctaacts{flex-direction:column;align-items:stretch;}
+  .ctaacts .btn-p,.ctaacts .btn-s{width:100%;justify-content:center;}
+
+  /* footer */
+  .ft{grid-template-columns:1fr;gap:32px;}
+  .fbot{flex-direction:column;align-items:flex-start;gap:8px;}
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-inner">
-    <a class="logo" href="#">Screenly<span class="logo-dot">.</span></a>
-    <div class="nav-right">
-      <ul>
-        <li><a href="#how" data-i18n="nav.how">How it works</a></li>
-        <li><a href="#benefits" data-i18n="nav.benefits">Benefits</a></li>
-        <li><a href="#reviews" data-i18n="nav.reviews">Stories</a></li>
-        <li><a href="https://t.me/apply_jobs_bot" class="nav-cta" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">Launch the agent</a></li>
-      </ul>
-      <label class="visually-hidden" for="lang-select" data-i18n="lang.label">Language</label>
-      <select id="lang-select" class="lang-select">
-        <option value="en">English</option>
-        <option value="ru">Русский</option>
-        <option value="kk">Қазақша</option>
-        <option value="uz">Oʻzbekcha</option>
-        <option value="ur">اردو (Pakistan)</option>
-        <option value="hi">हिन्दी (भारत)</option>
-        <option value="fa">فارسی</option>
-        <option value="id">Bahasa Indonesia</option>
-      </select>
+  <a href="#" class="nav-logo">
+    <span class="material-icons-round nav-globe">language</span>
+    Screenly
+  </a>
+  <div class="nav-links">
+    <a href="#how" data-i18n="nav.how">How it works</a>
+    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+    <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <div class="lang-sw">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
     </div>
+    <a href="https://t.me/apply_jobs_bot?start=hire_human" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav.cta">Apply free today</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-orbit"></div>
-  <div class="hero-inner">
-    <div class="agent-pill">
-      <span class="agent-pill-dot"></span>
-      <span data-i18n="hero.pill">100% remote · global companies only · agent active</span>
+<div class="hero">
+  <div>
+    <div class="hero-badge fu"><span class="badge-dot"></span><span data-i18n="hero.badge">Real human assistant. Not a bot.</span></div>
+    <h1 class="fu d1" data-i18n-html="hero.h1">Guaranteed placement <em>into a remote job that pays in hard currency.</em></h1>
+    <ul class="hero-points fu d2">
+      <li><span class="material-icons-round">support_agent</span><span data-i18n-html="hero.b1"><strong>A real personal assistant</strong> &mdash; a human, not a bot.</span></li>
+      <li><span class="material-icons-round">public</span><span data-i18n="hero.b2">Finds 100% remote roles matched to you &mdash; worldwide, ~1,000 a month on average.</span></li>
+      <li><span class="material-icons-round">edit_note</span><span data-i18n="hero.b3">Tailored resume and a human cover letter on every application.</span></li>
+      <li><span class="material-icons-round">record_voice_over</span><span data-i18n="hero.b4">Interview prep tailored to every role.</span></li>
+    </ul>
+    <div class="hero-actions fu d3">
+      <a href="#how" class="btn-s"><span class="material-icons-round" style="font-size:18px">play_circle</span><span data-i18n="hero.cta2">See how it works</span></a>
     </div>
-    <h1 data-i18n-html="hero.title">Fully remote only.<br>Only <em>world-class<br>companies.</em></h1>
-    <p class="hero-sub" data-i18n="hero.sub">The AI agent finds only 100% remote openings at global companies, tailors your résumé, submits applications, and prepares you for interviews — while you get on with life.</p>
-    <div class="hero-actions">
-      <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="hero.btn">Launch the agent</a>
+    <div class="hero-proof fu d3">
+      <div class="av-stack">
+        <div class="av" style="background:#E3F2FD;color:#1565C0;">AB</div>
+        <div class="av" style="background:#E8F5E9;color:#2E7D32;">PN</div>
+        <div class="av" style="background:#FCE4EC;color:#880E4F;">LH</div>
+        <div class="av" style="background:#FFF3E0;color:#E65100;">MK</div>
+        <div class="av" style="background:#F3E5F5;color:#4A148C;">+</div>
+      </div>
+      <p class="av-txt"><strong>5,000+</strong> <span data-i18n="hero.social">professionals went remote this year</span></p>
     </div>
   </div>
-
-  <!-- Live agent feed -->
-  <div class="agent-feed">
-    <div class="feed-header">
-      <span data-i18n="feed.header">Agent log</span>
-      <div class="feed-live">LIVE</div>
-      <span class="feed-counter" id="feed-counter">0</span>
+  <div class="hero-vis fu d2">
+    <div class="hcard">
+      <div class="ch">
+        <div class="cav">AM</div>
+        <div class="cht">
+          <div class="cn" data-i18n="card.name">Alex M. &mdash; Your Career Assistant</div>
+          <div class="cr" data-i18n="card.role">Applying to remote roles on your behalf</div>
+        </div>
+        <div class="cst"><span class="dot"></span><span data-i18n="card.status">Applying now</span></div>
+      </div>
+      <div class="alist">
+        <div class="aitem"><div class="alogo">&#128226;</div><div class="ainf"><div class="jt" data-i18n="card.job1">Marketing Manager</div><div class="co" data-i18n="card.co1">HubSpot &middot; Remote &#127757;</div></div><span class="abg bc" data-i18n="card.badge.custom">Tailored resume</span></div>
+        <div class="aitem"><div class="alogo">&#129309;</div><div class="ainf"><div class="jt" data-i18n="card.job2">Customer Success Lead</div><div class="co" data-i18n="card.co2">Zendesk &middot; Remote &#127757;</div></div><span class="abg bs" data-i18n="card.badge.sent">Applied (top 34)</span></div>
+        <div class="aitem"><div class="alogo">&#128200;</div><div class="ainf"><div class="jt" data-i18n="card.job3">Operations Manager</div><div class="co" data-i18n="card.co3">Deel &middot; Remote &#127757;</div></div><span class="abg br" data-i18n="card.badge.review">Interview booked</span></div>
+      </div>
+      <div class="csumm"><span class="material-icons-round" style="color:var(--s);font-size:19px;">check_circle</span><span data-i18n-html="card.summary"><strong>847 remote roles</strong> applied this month &middot; avg. position #31</span></div>
     </div>
-    <div class="feed-progress-bar"><div class="feed-progress-fill" id="feed-progress"></div></div>
-    <div class="feed-list" id="feed-list"></div>
+    <div class="fchip chip1"><span class="material-icons-round" style="color:#43A047;font-size:17px;">verified</span><span data-i18n="card.chip1">Offer signed &#127881;</span></div>
+    <div class="fchip chip2"><span style="font-size:15px;">&#9749;</span><span data-i18n="card.chip2">&#9749; Working from Almaty</span></div>
   </div>
+</div>
 
+<!-- WHY -->
+<section>
+  <div class="si">
+    <div class="slabel"><span class="material-icons-round" style="font-size:13px;">emoji_events</span><span data-i18n="why.label">Three things that get you hired</span></div>
+    <h2 data-i18n-html="why.h2">Speed. Quality. Volume.<br><em>Most services give you one.</em></h2>
+    <p class="ssub" data-i18n="why.sub">Remote hiring is a numbers game with a quality filter. You need enough applications to get lucky, sent fast enough to beat the crowd, each one good enough to survive a real recruiter. We deliver all three.</p>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><span class="material-icons-round">bolt</span></div><h3 data-i18n="why.1.title">Speed: first 50 applicants</h3><p data-i18n="why.1.body">Remote job postings on top boards receive 200&ndash;400 applications. 80% of interviews come from the first 50 applicants. We apply within hours of a role going live &mdash; not days.</p></div>
+      <div class="why-card"><div class="why-icon"><span class="material-icons-round">description</span></div><h3 data-i18n="why.2.title">Quality: tailored every time</h3><p data-i18n="why.2.body">Every application gets a resume adapted to that specific role&rsquo;s keywords and requirements, plus a cover letter written by a human that doesn&rsquo;t sound like ChatGPT. Recruiters notice the difference.</p></div>
+      <div class="why-card"><div class="why-icon"><span class="material-icons-round">layers</span></div><h3 data-i18n="why.3.title">Volume: 500&ndash;1,000 roles a month</h3><p data-i18n="why.3.body">We search 40+ global remote boards daily and apply to every quality-matched role. The average job seeker applies to 20&ndash;30 roles a month. Our clients cover 20&ndash;50&times; more ground.</p></div>
+      <div class="why-card"><div class="why-icon"><span class="material-icons-round">person</span></div><h3 data-i18n="why.4.title">Personal assistant, not a tool</h3><p data-i18n="why.4.body">You get a dedicated career assistant who knows your background, tracks your applications, preps you for interviews, and shares the tactics that actually work at remote-first companies.</p></div>
+    </div>
+  </div>
 </section>
+
+<!-- HOW IT WORKS -->
+<section class="how-bg" id="how">
+  <div class="si">
+    <div class="slabel"><span class="material-icons-round" style="font-size:13px;">timeline</span><span data-i18n="how.label">How the process works</span></div>
+    <h2 data-i18n-html="how.h2">Consultation &rarr; applications &rarr; <em>interviews</em></h2>
+    <p class="ssub" data-i18n="how.sub">A short intro call, a dedicated assistant, and daily applications &mdash; you step in when an interview is booked.</p>
+    <div class="steps">
+      <div class="step"><div class="snum">01</div><div class="sico"><span class="material-icons-round">fact_check</span></div><h3 data-i18n="how.step1.title">Consultation (15 min)</h3><p data-i18n="how.step1.body">We start with a short, friendly chat &mdash; we get to know your background and career goals and tell you honestly whether we can help. 15 minutes, no commitment.</p><a href="https://t.me/apply_jobs_bot?start=hire_human" target="_blank" rel="noopener noreferrer" class="btn-p step-cta"><span class="material-icons-round" style="font-size:17px">edit_note</span><span data-i18n="how.step1.cta">Submit application</span></a></div>
+      <div class="step"><div class="snum">02</div><div class="sico"><span class="material-icons-round">manage_search</span></div><h3 data-i18n="how.step2.title">Assigning your assistant</h3><p data-i18n="how.step2.body">Your assistant builds your remote-optimised resume, sets salary targets against global benchmarks, and maps out the boards, roles, and companies most likely to convert for your specific background.</p></div>
+      <div class="step"><div class="snum">03</div><div class="sico"><span class="material-icons-round">record_voice_over</span></div><h3 data-i18n="how.step3.title">Applications start</h3><p data-i18n="how.step3.body">Applications go out daily. Every one is tailored. <strong>You get notified on every application</strong> and step in only when an interview is booked.</p></div>
+    </div>
+  </div>
+</section>
+
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div class="stat">
-      <div class="stat-num">100<em>%</em></div>
-      <div class="stat-label" data-i18n-html="stats.s1">only fully<br>remote roles</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">60<em>+</em></div>
-      <div class="stat-label" data-i18n-html="stats.s2">companies hiring<br>across borders</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">94<em>%</em></div>
-      <div class="stat-label" data-i18n-html="stats.s3">land an offer<br>in 6–8 weeks</div>
-    </div>
-  </div>
-</div>
-
-<!-- COMPANY TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-label" data-i18n="ticker.label">companies hiring remotely worldwide</div>
-  <div class="ticker-track" id="ticker">
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Stripe</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Notion</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Linear</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Figma</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>GitLab</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Automattic</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Basecamp</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Shopify</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Doist</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>InVision</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Zapier</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Buffer</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Loom</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Remote.com</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Deel</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Miro</span>
-    <!-- duplicate for seamless loop -->
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Stripe</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Notion</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Linear</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Figma</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>GitLab</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Automattic</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Basecamp</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Shopify</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Doist</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>InVision</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Zapier</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Buffer</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Loom</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Remote.com</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Deel</span>
-    <span class="ticker-item"><span class="ticker-item-dot"></span>Miro</span>
-  </div>
-</div>
-
-<!-- GLOBE BANNER -->
-<div class="globe-banner">
-  <svg class="globe-svg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="90" stroke="white" stroke-width="1"/>
-    <ellipse cx="100" cy="100" rx="40" ry="90" stroke="white" stroke-width="0.8"/>
-    <ellipse cx="100" cy="100" rx="70" ry="90" stroke="white" stroke-width="0.6"/>
-    <line x1="10" y1="100" x2="190" y2="100" stroke="white" stroke-width="0.8"/>
-    <line x1="100" y1="10" x2="100" y2="190" stroke="white" stroke-width="0.8"/>
-    <ellipse cx="100" cy="100" rx="90" ry="30" stroke="white" stroke-width="0.6"/>
-    <ellipse cx="100" cy="100" rx="90" ry="65" stroke="white" stroke-width="0.5"/>
-  </svg>
-  <div class="globe-banner-inner">
-    <h3 data-i18n-html="globe.title">No office. No borders.<br>No compromises.</h3>
-    <p data-i18n="globe.p">The agent only works openings where the employer hires globally and is ready to pay you — no matter where you live.</p>
-    <div class="region-pills">
-      <span class="region-pill"><span class="region-flag">🇺🇸</span> <span data-i18n="globe.region.na">North America</span></span>
-      <span class="region-pill"><span class="region-flag">🇪🇺</span> <span data-i18n="globe.region.eu">Europe</span></span>
-      <span class="region-pill"><span class="region-flag">🇬🇧</span> <span data-i18n="globe.region.uk">United Kingdom</span></span>
-      <span class="region-pill"><span class="region-flag">🌏</span> <span data-i18n="globe.region.asia">Asia / Pacific</span></span>
-      <span class="region-pill"><span class="region-flag">🌍</span> <span data-i18n="globe.region.mena">Africa & Middle East</span></span>
-      <span class="region-pill"><span class="region-flag">🌎</span> <span data-i18n="globe.region.latam">Latin America</span></span>
-    </div>
-  </div>
-</div>
-
-
-<section class="how" id="how">
-  <div class="how-inner">
-    <div class="how-layout">
-      <div class="how-left">
-        <div class="section-eyebrow" data-i18n="how.eyebrow">How the agent works</div>
-        <h2 data-i18n-html="how.h2">Only global<br><em>remote-first companies.</em><br>Only real roles.</h2>
-        <p class="section-lead" data-i18n="how.lead">No “maybe remote” or “partly from the office.” The agent works exclusively with fully remote openings worldwide.</p>
-
-        <div class="steps-list">
-          <div class="step-row">
-            <div class="step-num-wrap">1</div>
-            <div class="step-content">
-              <span class="step-tag" data-i18n="how.s1.tag">Search</span>
-              <h3 data-i18n="how.s1.h">Scans only 100% remote openings</h3>
-              <p data-i18n="how.s1.p">The agent monitors thousands of global platforms — We Work Remotely, Remote.co, Himalayas, LinkedIn, private boards — and filters strictly: fully remote only, no office tie-in, from any country.</p>
-            </div>
-          </div>
-          <div class="step-row">
-            <div class="step-num-wrap">2</div>
-            <div class="step-content">
-              <span class="step-tag" data-i18n="how.s2.tag">Résumé</span>
-              <h3 data-i18n="how.s2.h">Improves and tailors your résumé</h3>
-              <p data-i18n="how.s2.p">For each role the agent builds a separate résumé and cover letter — with the right keywords, emphasis, and structure for ATS systems.</p>
-            </div>
-          </div>
-          <div class="step-row">
-            <div class="step-num-wrap">3</div>
-            <div class="step-content">
-              <span class="step-tag" data-i18n="how.s3.tag">Applications</span>
-              <h3 data-i18n="how.s3.h">Submits applications autonomously</h3>
-              <p data-i18n="how.s3.p">The agent sends applications, corresponds with recruiters, and tracks every status — while you focus on your own work.</p>
-            </div>
-          </div>
-          <div class="step-row">
-            <div class="step-num-wrap">4</div>
-            <div class="step-content">
-              <span class="step-tag" data-i18n="how.s4.tag">Interview</span>
-              <h3 data-i18n="how.s4.h">Interview prep</h3>
-              <p data-i18n="how.s4.p">Mock interviews with feedback, review of typical questions, and offer-negotiation strategy — the agent supports you at every stage through to the final round.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="how-right">
-        <div class="match-card">
-          <div class="match-card-top">
-            <div class="match-company-row">
-              <div class="match-company-logo">S</div>
-              <div>
-                <div class="match-company-name">Stripe</div>
-                <div class="match-company-meta" data-i18n="match.meta">US · 100% remote · worldwide</div>
-              </div>
-              <div class="match-badge" data-i18n="match.badge">87% match</div>
-            </div>
-            <div class="match-role">Senior Product Manager</div>
-            <div class="match-salary" data-i18n="match.salary">$140,000 – $180,000 / year</div>
-          </div>
-
-          <div class="match-divider"></div>
-
-          <div class="match-tags-label" data-i18n="match.tagsLabel">Key matches</div>
-          <div class="match-tags">
-            <span class="match-tag match-tag-yes">Payments experience</span>
-            <span class="match-tag match-tag-yes">Remote-first</span>
-            <span class="match-tag match-tag-yes" data-i18n="match.tagPm">5+ years PM</span>
-            <span class="match-tag match-tag-yes">B2B SaaS</span>
-            <span class="match-tag match-tag-no" data-i18n="match.tagNo">Fintech — strengthen</span>
-          </div>
-
-          <div class="match-divider"></div>
-
-          <div class="match-timeline">
-            <div class="match-step match-step-done">
-              <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step1">Role found and verified</div>
-            </div>
-            <div class="match-step match-step-done">
-              <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step2">Résumé tailored for ATS</div>
-            </div>
-            <div class="match-step match-step-done">
-              <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step3">Cover letter ready</div>
-            </div>
-            <div class="match-step match-step-active">
-              <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n-html="match.step4">Submitting application <span class="typing-dots"><span></span><span></span><span></span></span></div>
-            </div>
-            <div class="match-step match-step-pending">
-              <div class="match-step-dot"></div>
-              <div class="match-step-text" data-i18n="match.step5">Awaiting recruiter reply</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BENEFITS -->
-<section class="benefits" id="benefits">
-  <div class="benefits-inner">
-    <div class="benefits-header">
-      <div class="section-eyebrow" data-i18n="benefits.eyebrow">Why the agent wins</div>
-        <h2 data-i18n-html="benefits.h2">The entire global<br>remote job market —<br><em>in one agent</em></h2>
-        <p class="section-lead" data-i18n="benefits.lead">The agent does not look “near home.” It looks for the best job in the world — wherever that is.</p>
-    </div>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-num">01</div>
-        <h3 data-i18n="benefits.b1h">Runs 24/7</h3>
-        <p data-i18n="benefits.b1p">The agent does not sleep, take vacation, or get sidetracked. While you rest, it searches, tailors, and submits applications.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">02</div>
-        <h3 data-i18n="benefits.b2h">Fully remote only — no exceptions</h3>
-        <p data-i18n="benefits.b2p">Strict filtering: no hybrid, no “sometimes from the office.” Only roles where you work from anywhere, for good.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">03</div>
-        <h3 data-i18n="benefits.b3h">Companies from 60+ countries</h3>
-        <p data-i18n="benefits.b3p">US, Europe, Asia, Latin America — the agent sees the whole market. The best role is not always in the next country over.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">04</div>
-        <h3 data-i18n="benefits.b4h">Résumés that pass ATS</h3>
-        <p data-i18n="benefits.b4p">Algorithms filter out most candidates before a human recruiter ever sees them. The agent knows how to get through.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">05</div>
-        <h3 data-i18n="benefits.b5h">AI mock interviews</h3>
-        <p data-i18n="benefits.b5p">Realistic interview practice with detailed answer review. You walk into the real interview prepared.</p>
-      </div>
-      <div class="benefit-card">
-        <div class="benefit-num">06</div>
-        <h3 data-i18n="benefits.b6h">Offer negotiation</h3>
-        <p data-i18n="benefits.b6p">The agent analyzes market data and helps you justify a higher salary — on average about +18%.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATIONS -->
-<section class="integrations" id="integrations">
-  <div class="integrations-inner">
-    <div class="integrations-header">
-      <div class="section-eyebrow" data-i18n="intg.eyebrow">Integrations</div>
-      <h2 data-i18n-html="intg.h2">The agent works where<br><em>you</em> work</h2>
-      <p class="section-lead" data-i18n="intg.lead">Connect your Gmail and a dedicated browser — the agent reads mail (including confirmations), applies on employer sites like a human would, and keeps you updated.</p>
-    </div>
-
-    <div class="intg-diagram-wrap">
-      <div class="intg-chip">
-        <div class="intg-chip-icon">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="10" fill="#fff"/><path d="M6 13l12 8 12-8V26a1.5 1.5 0 01-1.5 1.5h-21A1.5 1.5 0 016 26V13z" fill="#EA4335"/><path d="M6 11h24l-12 9L6 11z" fill="url(#gm)"/><defs><linearGradient id="gm" x1="6" y1="11" x2="30" y2="11" gradientUnits="userSpaceOnUse"><stop stop-color="#EA4335"/><stop offset="0.5" stop-color="#FBBC04"/><stop offset="1" stop-color="#34A853"/></linearGradient></defs></svg>
-        </div>
-        <span class="intg-chip-label">Gmail</span>
-      </div>
-
-      <div class="intg-connector"></div>
-
-      <div class="intg-hub">
-        <span class="intg-hub-label">Agent</span>
-      </div>
-
-      <div class="intg-connector intg-connector-rev"></div>
-
-      <div class="intg-chip">
-        <div class="intg-chip-icon intg-chip-icon-browser">
-          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect width="36" height="36" rx="10" fill="#fff"/><rect x="8" y="10" width="20" height="16" rx="2" stroke="#5c6bc0" stroke-width="1.4"/><path fill="#e8eaf6" d="M8 10h20v5H8z"/><circle cx="11.5" cy="12.5" r="1" fill="#9fa8da"/><circle cx="15" cy="12.5" r="1" fill="#9fa8da"/><circle cx="18.5" cy="12.5" r="1" fill="#9fa8da"/><path d="M11 19h14M11 23h10" stroke="#5c6bc0" stroke-width="1.2" stroke-linecap="round"/></svg>
-        </div>
-        <span class="intg-chip-label" data-i18n="intg.browser.chip">Browser</span>
-      </div>
-    </div>
-
-    <div class="intg-cards">
-      <div class="intg-card">
-        <div class="intg-card-icon" style="background:#fde8e8">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="5" width="18" height="13" rx="2" stroke="#EA4335" stroke-width="1.5"/><path d="M2 8l9 6 9-6" stroke="#EA4335" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </div>
-        <div class="intg-card-body">
-          <h3 data-i18n="intg.email.h">Email integration</h3>
-          <p data-i18n="intg.email.p">The agent uses your inbox for confirmation emails, and verification links — so an application does not stall when a site asks you to confirm by mail.</p>
-          <div class="intg-security">
-            <div class="intg-security-title">
-              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" fill="#2d7a4f" opacity="0.15"/><path d="M6.5 1L2 3v3.5c0 2.6 1.9 5 4.5 5.5C9.1 11.5 11 9.1 11 6.5V3L6.5 1z" stroke="#2d7a4f" stroke-width="1.2" stroke-linejoin="round"/><path d="M4.5 6.5l1.5 1.5 2.5-3" stroke="#2d7a4f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <span data-i18n="intg.sec.title">Security</span>
-            </div>
-            <ul class="intg-security-list">
-              <li data-i18n="intg.sec.li1">Uses OAuth 2 — Gmail connects through Google's official OAuth 2 authorization; we never store your password.</li>
-              <li data-i18n="intg.sec.li2">Scoped access — recruiter threads and application flows only; the rest of your inbox stays private</li>
-              <li data-i18n="intg.sec.li3">Browser automation only on sites you authorize; revoke access in one click at any time</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="intg-card">
-        <div class="intg-card-icon" style="background:#ede7f6">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="4" width="16" height="13" rx="1.5" stroke="#5c6bc0" stroke-width="1.3"/><path fill="#e8eaf6" d="M3 4h16v4H3z"/><circle cx="5.5" cy="6" r="0.6" fill="#9fa8da"/><circle cx="7.5" cy="6" r="0.6" fill="#9fa8da"/><circle cx="9.5" cy="6" r="0.6" fill="#9fa8da"/><path d="M5 11h12M5 14h8" stroke="#5c6bc0" stroke-width="1" stroke-linecap="round"/></svg>
-        </div>
-        <div class="intg-card-body">
-          <h3 data-i18n="intg.browser.h">The agent's browser on the agent's computer for applications</h3>
-          <p data-i18n="intg.browser.p">The agent opens employer career portals in a controlled browser and applies the way you would: follow each step, upload your résumé, and submit — including confirmations when the flow requires it.</p>
-        </div>
-      </div>
-    </div>
+<section class="sbg">
+  <div class="sgrid">
+    <div class="sc"><div class="sn">78%</div><div class="sl2" data-i18n="stats.1">of clients land a remote interview within 30 days</div></div>
+    <div class="sc"><div class="sn">750</div><div class="sl2" data-i18n="stats.2">average remote applications per client per month</div></div>
+    <div class="sc"><div class="sn">+41%</div><div class="sl2" data-i18n="stats.3">average salary increase vs previous local role</div></div>
   </div>
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonials" id="reviews">
-  <div class="testimonials-inner">
-    <div class="testimonials-header">
-      <div class="section-eyebrow" data-i18n="test.eyebrow">Stories</div>
-      <h2 data-i18n-html="test.h2">They are already working<br><em>remotely</em></h2>
+<section>
+  <div class="si">
+    <div class="slabel"><span class="material-icons-round" style="font-size:13px;">favorite</span><span data-i18n="testi.label">Real clients. Real results.</span></div>
+    <h2 data-i18n-html="testi.h2">They applied through us.<br><em>Now they work from anywhere.</em></h2>
+    <p class="ssub" data-i18n="testi.sub">These are not testimonials from our marketing team. These are messages from clients whose career assistants got them into the first 50 applicants.</p>
+    <div class="tgrid">
+      <div class="tc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tt2" data-i18n="testi.1.text">"Applied myself for 8 months &mdash; nothing. My assistant applied to 600 roles in month one. 11 interviews, offer at 2.4&times; my previous salary."</p><div class="ta"><div class="tav" style="background:linear-gradient(135deg,#1A56DB,#00897B);">AB</div><div><div class="tr" data-i18n="testi.1.role">Operations Manager &rarr; Deel, remote (Almaty)</div></div></div></div>
+      <div class="tc" style="border-color:var(--p);"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tt2" data-i18n="testi.2.text">"Three hiring managers mentioned the cover letters on the first interview. My assistant knew how to write for global companies in a way I&rsquo;d never managed."</p><div class="ta"><div class="tav" style="background:linear-gradient(135deg,#880E4F,#C62828);">PN</div><div><div class="tr" data-i18n="testi.2.role">Marketing Lead &rarr; HubSpot, remote (Mumbai)</div></div></div></div>
+      <div class="tc"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="tt2" data-i18n="testi.3.text">"Worried volume would mean low quality. It didn&rsquo;t. Every role my assistant applied to was a genuine match. Not one wasted interview."</p><div class="ta"><div class="tav" style="background:linear-gradient(135deg,#E65100,#F9A825);">LH</div><div><div class="tr" data-i18n="testi.3.role">Customer Success &rarr; Zendesk, remote (Berlin)</div></div></div></div>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q1">“I just uploaded my résumé and told my story. Five weeks later — a fully remote offer from the US. The agent found a role I did not even know existed.”</span>
-        <div class="testimonial-author">
-          <div class="avatar av1">AS</div>
-          <div>
-            <span class="author-name" data-i18n="test.n1">Alina Smirnova</span>
-            <span class="author-role" data-i18n="test.r1">Product Manager · Stripe, Berlin</span>
-          </div>
-        </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section style="background:var(--surv);" id="pricing">
+  <div class="si">
+    <div class="slabel"><span class="material-icons-round" style="font-size:13px;">payments</span><span data-i18n="pricing.label">Pricing</span></div>
+    <h2 data-i18n-html="pricing.h2">Pay for results.<br><em>Not for activity.</em></h2>
+    <p class="ssub" data-i18n="pricing.sub">We take on clients we believe we can place. If you pass our screening, we back it with a guarantee: get interviews or get your money back. No forms. No questions.</p>
+    <div class="psingle">
+      <div class="pc feat">
+        <span class="pb" data-i18n="plan.1.badge">Pay for results</span>
+        <h3 class="pn" style="color:#fff;" data-i18n="plan.1.name">Result-based</h3>
+        <div class="pp" style="color:#fff;">$50<span data-i18n="plan.mo">/mo</span></div>
+        <div class="psf" data-i18n="plan.1.fee">+ 50% of your first month&rsquo;s salary &mdash; only after you get an offer</div>
+        <div class="pinst"><span class="material-icons-round">account_balance</span><span data-i18n="plan.1.inst">Bank installment available &mdash; up to 12 months</span></div>
+        <p class="pd" data-i18n="plan.1.desc">We&rsquo;re paid for the result. The big part comes only when you win the offer.</p>
+        <ul class="pf" style="color:#fff;">
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f1">Dedicated personal career assistant</span></li>
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f2">Up to 1,000 remote applications / mo</span></li>
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f3">Tailored resume + human cover letter per role</span></li>
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f4">First-50 applicant targeting</span></li>
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f5">Interview prep + salary negotiation</span></li>
+          <li><span class="material-icons-round">check</span><span data-i18n="plan.1.f6">Money-back interview guarantee</span></li>
+        </ul>
+        <a href="https://t.me/apply_jobs_bot?start=hire_human" target="_blank" rel="noopener noreferrer" class="pbtn" data-i18n="plan.btn">Apply for a spot</a>
       </div>
-      <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q2">“Mock interviews with the agent were the best prep I have tried. I felt confident in the real Amazon interview.”</span>
-        <div class="testimonial-author">
-          <div class="avatar av2">DM</div>
-          <div>
-            <span class="author-name" data-i18n="test.n2">Dmitry Morozov</span>
-            <span class="author-role" data-i18n="test.r2">Software Engineer · Amazon, London</span>
-          </div>
-        </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--onv);">
+      <span class="material-icons-round" style="font-size:15px;vertical-align:-3px;color:var(--s);">verified</span>
+      <span data-i18n="pricing.note">Money-back guarantee: no 3 interview invitations within 90 days and your monthly is fully refunded. The success fee is one-time, taken from your first salary, and can be split over 12 months.</span>
+    </p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="si">
+    <div class="faq-lay" style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;">
+      <div>
+        <div class="slabel"><span class="material-icons-round" style="font-size:13px;">help_outline</span><span data-i18n="faq.label">Straight answers</span></div>
+        <h2 data-i18n-html="faq.h2">The questions everyone<br><em>actually asks us</em></h2>
+        <p class="ssub" style="margin-bottom:0;" data-i18n="faq.sub">Not here? Message us. A human replies the same day.</p>
       </div>
-      <div class="testimonial">
-        <span class="testimonial-quote" data-i18n="test.q3">“I did not believe AI could write a better résumé than I could. I was wrong. The agent rewrote it so recruiters started reaching out first.”</span>
-        <div class="testimonial-author">
-          <div class="avatar av3">MK</div>
-          <div>
-            <span class="author-name" data-i18n="test.n3">Maria Koval</span>
-            <span class="author-role" data-i18n="test.r3">UX Designer · Figma, Amsterdam</span>
-          </div>
-        </div>
+      <div class="flist">
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.1.q">Who is Screenly for?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.1.a">Professionals across industries &mdash; marketing, operations, sales, HR, finance, design, product, and more. We take clients we believe we can place and back that with a guarantee.</div></div>
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.2.q">What&rsquo;s the guarantee &mdash; is there a catch?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.2.a">No catch. We&rsquo;re a team of engineers and recruiters, and we&rsquo;re focused on the result: the main fee is due only after you receive an offer. Money-back guarantee: if you don&rsquo;t get at least 3 interview invitations within 90 days, we refund all your monthly payments in full.</div></div>
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.3.q">How does the first-50 targeting work?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.3.a">We monitor 40+ remote job boards in real time. The moment a matching role is posted, your assistant prepares a tailored application and submits it &mdash; typically within 1&ndash;4 hours of the posting going live. The majority of remote interviews go to candidates who apply in this window.</div></div>
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.6.q">Where do you apply?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.6.a">Everywhere roles are posted: company career sites, LinkedIn, Indeed, HeadHunter, and other job boards &mdash; anywhere a matching remote role goes live.</div></div>
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.4.q">Can I control where I apply and where I don&rsquo;t?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.4.a">Yes. For example, to avoid applying to your current or previous employer, there&rsquo;s a stop-list. You can also set a wishlist of target companies you&rsquo;d like to reach first.</div></div>
+        <div class="fi"><button class="fq" onclick="toggleFaq(this)"><span data-i18n="faq.5.q">What happens after I get an interview?</span><span class="material-icons-round">add</span></button><div class="fa" data-i18n="faq.5.a">Your assistant briefs you on the company: their remote culture, the role&rsquo;s context, likely interview structure, and salary benchmarks for the position. We also share negotiation tactics specific to remote-first companies. You don&rsquo;t walk in cold.</div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="cta">
-  <div class="cta-inner">
-    <h2 data-i18n-html="cta.h2">Your global<br>remote career<br>starts here</h2>
-    <p data-i18n="cta.p">Tell us about yourself in 10 minutes — the agent starts searching worldwide immediately.</p>
-    <a href="https://t.me/apply_jobs_bot" class="btn-primary" target="_blank" rel="noopener noreferrer" data-i18n="cta.btn">Start free</a>
-    <div class="cta-note" data-i18n="cta.note">Free trial · No card required · Cancel anytime</div>
+<section class="ctasec">
+  <div class="si">
+    <div class="ctacard">
+      <div class="slabel" style="justify-content:center;"><span class="material-icons-round" style="font-size:13px;">verified</span><span data-i18n="cta.label">Apply for a spot</span></div>
+      <h2 data-i18n-html="cta.h2">We don&rsquo;t take everyone.<br><em>But we back everyone we take.</em></h2>
+      <p data-i18n="cta.sub">Pass our screening and we guarantee interviews &mdash; or your money back. Your assistant starts the same day. First 5 applications are free.</p>
+      <div class="ctaacts">
+        <a href="https://t.me/apply_jobs_bot?start=hire_human" target="_blank" rel="noopener noreferrer" class="btn-p" style="font-size:16px;padding:16px 36px;"><span class="material-icons-round" style="font-size:20px;">rocket_launch</span><span data-i18n="cta.btn1">Apply for screening</span></a>
+      </div>
+      <p style="margin-top:18px;font-size:13px;color:var(--onv);" data-i18n="cta.fine">Remote roles worldwide &middot; All industries</p>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <a class="footer-logo" href="#">Screenly.</a>
-    <div class="footer-links">
-      <a href="#" data-i18n="footer.privacy">Privacy</a>
-      <a href="#" data-i18n="footer.terms">Terms</a>
-      <a href="#" data-i18n="footer.contact">Contact</a>
+  <div class="fi2">
+    <div class="ft">
+      <div class="fb2"><div class="fn">Screenly &#127757;</div><p data-i18n="footer.brand">Real career assistants who apply to remote jobs on your behalf. Speed, quality, volume &mdash; all three, every day.</p></div>
+      <div class="fc"><h4 data-i18n="footer.col1.title">Product</h4><a href="#" data-i18n="footer.col1.1">How it works</a><a href="#" data-i18n="footer.col1.2">Pricing</a><a href="#" data-i18n="footer.col1.3">For teams</a><a href="#" data-i18n="footer.col1.4">Success stories</a></div>
+      <div class="fc"><h4 data-i18n="footer.col2.title">Resources</h4><a href="#" data-i18n="footer.col2.1">Remote resume guide</a><a href="#" data-i18n="footer.col2.2">Top remote job boards 2026</a><a href="#" data-i18n="footer.col2.3">Remote interview playbook</a><a href="#" data-i18n="footer.col2.4">Global salary calculator</a></div>
+      <div class="fc"><h4 data-i18n="footer.col3.title">Company</h4><a href="#" data-i18n="footer.col3.1">About us</a><a href="#" data-i18n="footer.col3.2">Blog</a><a href="#" data-i18n="footer.col3.3">Privacy policy</a><a href="#" data-i18n="footer.col3.4">Terms of service</a></div>
     </div>
-    <span class="footer-copy" id="footer-copy" data-i18n="footer.copy">© 2026 Screenly</span>
+    <div class="fbot"><span data-i18n="footer.copy">&#169; 2026 Screenly. All rights reserved.</span><span data-i18n="footer.made">Built remotely, for remote workers &#127757;</span></div>
   </div>
 </footer>
 
-<script src="site-i18n.js" defer></script>
-<script src="site-i18n-locales.js" defer></script>
-
+<script>
+document.querySelectorAll('.why-card,.step,.tc,.pc,.di').forEach(function(el){
+  el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease,transform .5s ease';
+  new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.08}).observe(el);
+});
+setLang('ru');
+</script>
 </body>
 </html>
