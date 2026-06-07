@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -601,8 +601,8 @@ footer{background:#1C1B1F;color:rgba(255,255,255,.6);padding:64px 32px 32px;}
     <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="#faq" data-i18n="nav.faq">FAQ</a>
     <div class="lang-sw">
-      <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn active" data-lang="ru" onclick="setLang('ru')">RU</button>
+      <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" data-lang="ru" onclick="setLang('ru')">RU</button>
     </div>
     <a href="https://t.me/apply_jobs_bot?start=hire_human" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav.cta">Apply free today</a>
   </div>
@@ -794,7 +794,7 @@ document.querySelectorAll('.why-card,.step,.tc,.pc,.di').forEach(function(el){
   el.style.opacity='0';el.style.transform='translateY(18px)';el.style.transition='opacity .5s ease,transform .5s ease';
   new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}});},{threshold:0.08}).observe(el);
 });
-setLang('ru');
+setLang('en');
 </script>
 </body>
 </html>
