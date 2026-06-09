@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const TELEGRAM_APPLY_URL = 'https://t.me/apply_jobs_bot?start=hire_human';
+const TELEGRAM_APPLY_URL = 'https://t.me/apply_jobs_bot?start=hire_human_ref_instagram';
 
 app.get('/remote', (req, res) => {
   res.redirect(302, TELEGRAM_APPLY_URL);
