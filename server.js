@@ -20,7 +20,7 @@ app.get('/remote', (req, res) => {
 });
 
 app.get('/companies', (req, res) => {
-  res.redirect(302, TELEGRAM_BOT_BASE + 'companies');
+  res.redirect(302, 'https://telegram.me/apply_jobs_bot?start=companies');
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
