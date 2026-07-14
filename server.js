@@ -19,6 +19,10 @@ app.get('/remote', (req, res) => {
   res.redirect(302, TELEGRAM_BOT_BASE + start);
 });
 
+app.get('/companies', (req, res) => {
+  res.redirect(302, TELEGRAM_BOT_BASE + 'companies');
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
